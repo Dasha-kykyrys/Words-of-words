@@ -1,22 +1,40 @@
 from PyQt5 import QtWidgets
-from mainmenu import Ui_mainmenu
+from GUI import Ui_mainmenu, Ui_exit
 
-class Window(QtWidgets.QMainWindow):
+
+class Mainmenu(QtWidgets.QMainWindow):
     def __init__(self):
-        super(Window, self).__init__()
-        self.ui = Ui_mainmenu()
-        self.ui.setupUi(self)
+        super(Mainmenu, self).__init__()
+        self.ui_window = Ui_mainmenu()
+        self.ui_window.setupUi(self)
 
-        #self.ui.Play.clicked.connect(self.lvlmenu)
+        self.ui_window.Exit.clicked.connect(self.exit)
 
-    #def lvlmenu(self):
-       # self.ui = Ui_Levelmenu()
-       # self.ui.setupUi(self)
+    def exit(self):
+        widget.setCurrentIndex(widget.currentIndex()+1)
 
 
+class Exit(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(Exit, self).__init__()
+        self.ui_exit = Ui_exit()
+        self.ui_exit.setupUi(self)
+
+        self.ui_exit.yes.clicked.connect(self.yes)
+        self.ui_exit.no.clicked.connect(self.no)
+
+    def yes(self):
+        quit()
+
+    def no(self):
+        widget.setCurrentIndex(widget.currentIndex()-1)
 
 
 app = QtWidgets.QApplication([])
-application = Window()
-application.show()
+widget = QtWidgets.QStackedWidget()
+mainmenu_screen = Mainmenu()
+exit_screen = Exit()
+widget.addWidget(mainmenu_screen)
+widget.addWidget(exit_screen)
+widget.showMaximized()
 app.exec()
