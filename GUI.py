@@ -111,7 +111,6 @@ class Ui_mainmenu(object):
         _translate = QtCore.QCoreApplication.translate
         mainmenu.setWindowTitle(_translate("mainmenu", "Подушечки из котиков"))
 
-
 class Ui_exit(object):
     def setupUi(self, exit):
         exit.setObjectName("exit")
@@ -181,6 +180,386 @@ class Ui_exit(object):
         _translate = QtCore.QCoreApplication.translate
         exit.setWindowTitle(_translate("exit", "MainWindow"))
 
+class Ui_rule_1(object):
+    def setupUi(self, rule_1):
+        rule_1.setObjectName("rule_1")
+        rule_1.resize(1440, 1024)
+        rule_1.setMinimumSize(QtCore.QSize(1440, 1024))
+        rule_1.setStyleSheet("QMainWindow{\n"
+"border-image: url(:/back/sprites/rules-1.png);\n"
+"border-position: center;\n"
+"}")
+        self.centralwidget = QtWidgets.QWidget(rule_1)
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSpacing(31)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setMinimumSize(QtCore.QSize(85, 77))
+        self.label.setMaximumSize(QtCore.QSize(85, 77))
+        self.label.setStyleSheet("background-image: url(:/back/sprites/leftoff.png);")
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.horizontalLayout.addWidget(self.label)
+        self.btnrigth = QtWidgets.QPushButton(self.centralwidget)
+        self.btnrigth.setMinimumSize(QtCore.QSize(85, 77))
+        self.btnrigth.setMaximumSize(QtCore.QSize(85, 77))
+        self.btnrigth.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/sprites/right.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/sprites/pressright.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btnrigth.setText("")
+        self.btnrigth.setObjectName("btnrigth")
+        self.horizontalLayout.addWidget(self.btnrigth)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.btnmainmenu = QtWidgets.QPushButton(self.centralwidget)
+        self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
+        self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
+        self.btnmainmenu.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/sprites/btmainmenu.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btnmainmenu.setText("")
+        self.btnmainmenu.setObjectName("btnmainmenu")
+        self.horizontalLayout_2.addWidget(self.btnmainmenu)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem2)
+        self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem3, 1, 0, 1, 1)
+        rule_1.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(rule_1)
+        QtCore.QMetaObject.connectSlotsByName(rule_1)
+
+    def retranslateUi(self, rule_1):
+        _translate = QtCore.QCoreApplication.translate
+        rule_1.setWindowTitle(_translate("rule_1", "MainWindow"))
+        self.btnmainmenu.setToolTip(_translate("rule_1", "меню"))
+
+class Ui_rule_2(object):
+    def setupUi(self, rule_2):
+        rule_2.setObjectName("rule_2")
+        rule_2.resize(1440, 1024)
+        rule_2.setMinimumSize(QtCore.QSize(1440, 1024))
+        rule_2.setStyleSheet("QMainWindow{\n"
+"border-image: url(:/back/sprites/rules-2.png);\n"
+"border-position: center;\n"
+"}")
+        self.centralwidget = QtWidgets.QWidget(rule_2)
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSpacing(31)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.btnleft = QtWidgets.QPushButton(self.centralwidget)
+        self.btnleft.setMinimumSize(QtCore.QSize(85, 77))
+        self.btnleft.setMaximumSize(QtCore.QSize(85, 77))
+        self.btnleft.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/sprites/left.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/sprites/pressleft.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}")
+        self.btnleft.setText("")
+        self.btnleft.setObjectName("btnleft")
+        self.horizontalLayout.addWidget(self.btnleft)
+        self.btnright = QtWidgets.QPushButton(self.centralwidget)
+        self.btnright.setMinimumSize(QtCore.QSize(85, 77))
+        self.btnright.setMaximumSize(QtCore.QSize(85, 77))
+        self.btnright.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/sprites/right.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/sprites/pressright.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btnright.setText("")
+        self.btnright.setObjectName("btnright")
+        self.horizontalLayout.addWidget(self.btnright)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.btnmainmenu = QtWidgets.QPushButton(self.centralwidget)
+        self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
+        self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
+        self.btnmainmenu.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/sprites/btmainmenu.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btnmainmenu.setText("")
+        self.btnmainmenu.setObjectName("btnmainmenu")
+        self.horizontalLayout_2.addWidget(self.btnmainmenu)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem2)
+        self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem3, 1, 0, 1, 1)
+        rule_2.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(rule_2)
+        QtCore.QMetaObject.connectSlotsByName(rule_2)
+
+    def retranslateUi(self, rule_2):
+        _translate = QtCore.QCoreApplication.translate
+        rule_2.setWindowTitle(_translate("rule_2", "MainWindow"))
+        self.btnmainmenu.setToolTip(_translate("rule_2", "меню"))
+
+class Ui_rule_3(object):
+    def setupUi(self, rule_3):
+        rule_3.setObjectName("rule_3")
+        rule_3.resize(1440, 1024)
+        rule_3.setMinimumSize(QtCore.QSize(1440, 1024))
+        rule_3.setStyleSheet("QMainWindow{\n"
+"border-image: url(:/back/sprites/rules-3.png);\n"
+"border-position: center;\n"
+"}")
+        self.centralwidget = QtWidgets.QWidget(rule_3)
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSpacing(31)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.btnleft = QtWidgets.QPushButton(self.centralwidget)
+        self.btnleft.setMinimumSize(QtCore.QSize(85, 77))
+        self.btnleft.setMaximumSize(QtCore.QSize(85, 77))
+        self.btnleft.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/sprites/left.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/sprites/pressleft.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}")
+        self.btnleft.setText("")
+        self.btnleft.setObjectName("btnleft")
+        self.horizontalLayout.addWidget(self.btnleft)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setMinimumSize(QtCore.QSize(85, 77))
+        self.label.setMaximumSize(QtCore.QSize(85, 77))
+        self.label.setStyleSheet("background-image: url(:/back/sprites/rightoff.png);")
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.horizontalLayout.addWidget(self.label)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.btnmainmenu = QtWidgets.QPushButton(self.centralwidget)
+        self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
+        self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
+        self.btnmainmenu.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/sprites/btmainmenu.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btnmainmenu.setText("")
+        self.btnmainmenu.setObjectName("btnmainmenu")
+        self.horizontalLayout_2.addWidget(self.btnmainmenu)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem2)
+        self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem3, 1, 0, 1, 1)
+        rule_3.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(rule_3)
+        QtCore.QMetaObject.connectSlotsByName(rule_3)
+
+    def retranslateUi(self, rule_3):
+        _translate = QtCore.QCoreApplication.translate
+        rule_3.setWindowTitle(_translate("rule_3", "MainWindow"))
+        self.btnmainmenu.setToolTip(_translate("rule_3", "меню"))
+
+class Ui_settings(object):
+    def setupUi(self, settings):
+        settings.setObjectName("settings")
+        settings.resize(1440, 1024)
+        settings.setMinimumSize(QtCore.QSize(1440, 1024))
+        settings.setStyleSheet("QMainWindow{\n"
+"border-image: url(:/back/sprites/settings.png);\n"
+"border-position: center;\n"
+"}")
+        self.centralwidget = QtWidgets.QWidget(settings)
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setContentsMargins(440, 5, 440, 200)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.btnon = QtWidgets.QPushButton(self.centralwidget)
+        self.btnon.setMinimumSize(QtCore.QSize(182, 84))
+        self.btnon.setMaximumSize(QtCore.QSize(182, 84))
+        self.btnon.setStyleSheet("QPushButton{\n"
+"border-image: url(:/back/sprites/On.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/back/sprites/pressOn.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"")
+        self.btnon.setText("")
+        self.btnon.setObjectName("btnon")
+        self.horizontalLayout.addWidget(self.btnon)
+        self.btnoff = QtWidgets.QPushButton(self.centralwidget)
+        self.btnoff.setMinimumSize(QtCore.QSize(182, 84))
+        self.btnoff.setMaximumSize(QtCore.QSize(182, 84))
+        self.btnoff.setStyleSheet("QPushButton{\n"
+"border-image: url(:/back/sprites/Off.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/back/sprites/pressOff.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"")
+        self.btnoff.setText("")
+        self.btnoff.setObjectName("btnoff")
+        self.horizontalLayout.addWidget(self.btnoff)
+        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setContentsMargins(11, 0, 0, 6)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.btnmainmenu = QtWidgets.QPushButton(self.centralwidget)
+        self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
+        self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
+        self.btnmainmenu.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/sprites/btmainmenu.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btnmainmenu.setText("")
+        self.btnmainmenu.setObjectName("btnmainmenu")
+        self.horizontalLayout_4.addWidget(self.btnmainmenu)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem)
+        self.gridLayout.addLayout(self.horizontalLayout_4, 0, 0, 1, 1)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem1, 4, 0, 1, 1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem2, 1, 0, 1, 1)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setContentsMargins(440, 80, 440, -1)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.btnon_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.btnon_2.setMinimumSize(QtCore.QSize(182, 84))
+        self.btnon_2.setMaximumSize(QtCore.QSize(182, 84))
+        self.btnon_2.setStyleSheet("QPushButton{\n"
+"border-image: url(:/back/sprites/On.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/back/sprites/pressOn.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"")
+        self.btnon_2.setText("")
+        self.btnon_2.setObjectName("btnon_2")
+        self.horizontalLayout_3.addWidget(self.btnon_2)
+        self.btnoff_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.btnoff_2.setMinimumSize(QtCore.QSize(182, 84))
+        self.btnoff_2.setMaximumSize(QtCore.QSize(182, 84))
+        self.btnoff_2.setStyleSheet("QPushButton{\n"
+"border-image: url(:/back/sprites/Off.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/back/sprites/pressOff.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"")
+        self.btnoff_2.setText("")
+        self.btnoff_2.setObjectName("btnoff_2")
+        self.horizontalLayout_3.addWidget(self.btnoff_2)
+        self.gridLayout.addLayout(self.horizontalLayout_3, 3, 0, 1, 1)
+        settings.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(settings)
+        QtCore.QMetaObject.connectSlotsByName(settings)
+
+    def retranslateUi(self, settings):
+        _translate = QtCore.QCoreApplication.translate
+        settings.setWindowTitle(_translate("settings", "MainWindow"))
+        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
 
 class Ui_marker(object):
     def setupUi(self, marker):
@@ -533,6 +912,7 @@ class Ui_marker(object):
         self.count.setText(_translate("pillow", str(self.n) + "/11 СЛОВ"))
         self.confirm.setToolTip(_translate("marker", "подтверждение"))
         self.cancel.setToolTip(_translate("marker", "отмена"))
+        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
 
 
 class Ui_pillow(object):
@@ -851,6 +1231,7 @@ class Ui_pillow(object):
         self.count.setText(_translate("pillow", str(self.n) + "/11 СЛОВ"))
         self.confirm.setToolTip(_translate("pillow", "подтверждение"))
         self.cancel.setToolTip(_translate("pillow", "отмена"))
+        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
 
 class Ui_mokasin(object):
     def setupUi(self, mokasin):
@@ -1167,6 +1548,7 @@ class Ui_mokasin(object):
         mokasin.setWindowTitle(_translate("mokasin", "MainWindow"))
         self.confirm.setToolTip(_translate("mokasin", "подтверждение"))
         self.cancel.setToolTip(_translate("mokasin", "отмена"))
+        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
         self.label.setText(_translate("mokasin", "ОТГАДАНО:"))
         self.n = 0
         self.count.setText(_translate("pillow", str(self.n) + "/11 СЛОВ"))
@@ -1237,6 +1619,8 @@ class Ui_lose(object):
     def retranslateUi(self, lose):
         _translate = QtCore.QCoreApplication.translate
         lose.setWindowTitle(_translate("lose", "MainWindow"))
+        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
+        self.btnreturne.setToolTip(_translate("settings", "повторить"))
 
 class Ui_win(object):
     def setupUi(self, win):
@@ -1304,6 +1688,8 @@ class Ui_win(object):
     def retranslateUi(self, win):
         _translate = QtCore.QCoreApplication.translate
         win.setWindowTitle(_translate("win", "MainWindow"))
+        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
+        self.btnreturn.setToolTip(_translate("settings", "повторить"))
 
 
 import background
