@@ -2,7 +2,7 @@ import random
 
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDesktopWidget
-from GUI import Ui_mainmenu, Ui_exit, Ui_pillow, Ui_lose, Ui_win, Ui_marker, Ui_mokasin, Ui_settings, Ui_rule_1, Ui_rule_2, Ui_rule_3
+from GUI import Ui_mainmenu, Ui_exit, Ui_pillow, Ui_lose, Ui_win, Ui_marker, Ui_mokasin, Ui_settings, Ui_rule
 
 
 class Mainmenu(QtWidgets.QMainWindow):
@@ -19,7 +19,7 @@ class Mainmenu(QtWidgets.QMainWindow):
     def play(self):
         global number_level
 
-        number_level = random.randint(8, 10)
+        number_level = random.randint(6, 8)
         widget.setCurrentIndex(widget.currentIndex() + number_level)
 
     def settings(self):
@@ -44,54 +44,57 @@ class Settings(QtWidgets.QMainWindow):
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
 
-class Rule_1(QtWidgets.QMainWindow):
+class Rules(QtWidgets.QMainWindow):
     def __init__(self):
-        super(Rule_1, self).__init__()
-        self.ui_rule_1 = Ui_rule_1()
-        self.ui_rule_1.setupUi(self)
+        super(Rules, self).__init__()
+        self.ui_rule = Ui_rule()
+        self.ui_rule.setupUi(self)
 
-        self.ui_rule_1.btnrigth.clicked.connect(self.rigth)
-        self.ui_rule_1.btnmainmenu.clicked.connect(self.mainmenu)
+        self.ui_rule.btnright.clicked.connect(self.rigth)
+        self.ui_rule.btnleft.clicked.connect(self.left)
+        self.ui_rule.btnleft.setEnabled(False)
+        self.ui_rule.btnmainmenu.clicked.connect(self.mainmenu)
+
+        self.page = 1
+
+
 
     def rigth(self):
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        if self.page != 3:
+            self.page += 1
+        self.setStyleSheet("QMainWindow{\n"
+                           "border-image: url(:/back/resources/sprites/rules-" + str(self.page) + ".png);\n"
+                           "border-position: center;\n"
+                           "}")
+
+        if self.page > 1:
+            self.ui_rule.btnleft.setEnabled(True)
+        if self.page == 3:
+            self.ui_rule.btnright.setEnabled(False)
+
+    def left(self):
+        if self.page != 1:
+            self.page -= 1
+        self.setStyleSheet("QMainWindow{\n"
+                           "border-image: url(:/back/resources/sprites/rules-" + str(self.page) + ".png);\n"
+                           "border-position: center;\n"
+                           "}")
+
+        if self.page < 3:
+            self.ui_rule.btnright.setEnabled(True)
+        if self.page == 1:
+            self.ui_rule.btnleft.setEnabled(False)
+
 
     def mainmenu(self):
         widget.setCurrentIndex(widget.currentIndex() - 2)
-
-class Rule_2(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(Rule_2, self).__init__()
-        self.ui_rule_2 = Ui_rule_2()
-        self.ui_rule_2.setupUi(self)
-
-        self.ui_rule_2.btnright.clicked.connect(self.rigth)
-        self.ui_rule_2.btnleft.clicked.connect(self.left)
-        self.ui_rule_2.btnmainmenu.clicked.connect(self.mainmenu)
-
-    def rigth(self):
-        widget.setCurrentIndex(widget.currentIndex() + 1)
-
-    def left(self):
-        widget.setCurrentIndex(widget.currentIndex() - 1)
-
-    def mainmenu(self):
-        widget.setCurrentIndex(widget.currentIndex() - 3)
-
-class Rule_3(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(Rule_3, self).__init__()
-        self.ui_rule_3 = Ui_rule_3()
-        self.ui_rule_3.setupUi(self)
-
-        self.ui_rule_3.btnleft.clicked.connect(self.left)
-        self.ui_rule_3.btnmainmenu.clicked.connect(self.mainmenu)
-
-    def left(self):
-        widget.setCurrentIndex(widget.currentIndex() - 1)
-
-    def mainmenu(self):
-        widget.setCurrentIndex(widget.currentIndex() - 4)
+        self.ui_rule.btnleft.setEnabled(False)
+        self.ui_rule.btnright.setEnabled(True)
+        self.page = 1
+        self.setStyleSheet("QMainWindow{\n"
+                           "border-image: url(:/back/resources/sprites/rules-1.png);\n"
+                           "border-position: center;\n"
+                           "}")
 
 
 class Exit(QtWidgets.QMainWindow):
@@ -107,7 +110,7 @@ class Exit(QtWidgets.QMainWindow):
         quit()
 
     def no(self):
-        widget.setCurrentIndex(widget.currentIndex() - 2)
+        widget.setCurrentIndex(widget.currentIndex() - 3)
 
 
 class Marker(QtWidgets.QMainWindow):
@@ -133,10 +136,11 @@ class Marker(QtWidgets.QMainWindow):
         self.guessed = []
         self.maxrightWords = 0
         self.double_right = 0
-
+        self.cnt = 0
+        self.n = 0
 
     def mainmenu(self):
-        widget.setCurrentIndex(widget.currentIndex() - 8)
+        widget.setCurrentIndex(widget.currentIndex() - 6)
         self.clear_screen()
 
     def cancel(self):
@@ -156,12 +160,12 @@ class Marker(QtWidgets.QMainWindow):
 
         if self.ui_marker.word.text() in self.words and self.ui_marker.word.text() != "" and self.ui_marker.word.text() not in self.guessed:
             self.guessed.append(self.ui_marker.word.text())
-            self.ui_marker.n += 1
-            if self.ui_marker.cnt > 1:
+            self.n += 1
+            if self.cnt > 1:
                 self.double_right += 1
-            self.ui_marker.count.setText(str(self.ui_marker.n) + "/12 СЛОВ")
+            self.ui_marker.count.setText(str(self.n) + "/12 СЛОВ")
 
-            if self.ui_marker.n == 12:
+            if self.n == 12:
                 widget.setCurrentIndex(widget.currentIndex() - 1)
                 self.clear_screen()
 
@@ -174,15 +178,16 @@ class Marker(QtWidgets.QMainWindow):
 
             if self.double_right == 2:
                 self.double_right = 0
-                self.ui_marker.cnt -= 1
+                self.cnt -= 1
                 self.ui_marker.cat.setStyleSheet(
-                    "background-image: url(:/back/sprites/cat-" + str(self.ui_marker.cnt) + ".png);")
+                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
 
         elif self.ui_marker.word.text() not in self.words:
-            if self.ui_marker.cnt < 5:
-                self.ui_marker.cnt += 1
+            if self.cnt < 5:
+                self.double_right = 0
+                self.cnt += 1
                 self.ui_marker.cat.setStyleSheet(
-                    "background-image: url(:/back/sprites/cat-" + str(self.ui_marker.cnt) + ".png);")
+                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
             else:
                 widget.setCurrentIndex(widget.currentIndex() - 2)
                 self.clear_screen()
@@ -229,12 +234,12 @@ class Marker(QtWidgets.QMainWindow):
 
 
     def clear_screen(self):
-        self.ui_marker.n = 0
+        self.n = 0
         self.double_right = 0
-        self.ui_marker.count.setText(str(self.ui_marker.n) + "/11 СЛОВ")
-        self.ui_marker.cnt = 1
+        self.ui_marker.count.setText("0/11 СЛОВ")
+        self.cnt = 0
         self.ui_marker.cat.setStyleSheet(
-            "background-image: url(:/back/sprites/cat-" + str(self.ui_marker.cnt) + ".png);")
+            "background-image: url(:/back/resources/sprites/cat-0.png);")
         self.guessed = []
         self.ui_marker.rightWords.setText("")
         self.ui_marker.rightWords_2.setText("")
@@ -275,9 +280,11 @@ class Pillow(QtWidgets.QMainWindow):
         self.guessed = []
         self.maxrightWords = 0
         self.double_right = 0
+        self.cnt = 0
+        self.n = 0
 
     def mainmenu(self):
-        widget.setCurrentIndex(widget.currentIndex() - 9)
+        widget.setCurrentIndex(widget.currentIndex() - 7)
         self.clear_screen()
 
     def cancel(self):
@@ -297,12 +304,12 @@ class Pillow(QtWidgets.QMainWindow):
 
         if self.ui_pillow.word.text() in self.words and self.ui_pillow.word.text() != "" and self.ui_pillow.word.text() not in self.guessed:
             self.guessed.append(self.ui_pillow.word.text())
-            if self.ui_pillow.cnt > 1:
+            if self.cnt > 1:
                 self.double_right += 1
-            self.ui_pillow.n += 1
-            self.ui_pillow.count.setText(str(self.ui_pillow.n) + "/11 СЛОВ")
+            self.n += 1
+            self.ui_pillow.count.setText(str(self.n) + "/11 СЛОВ")
 
-            if self.ui_pillow.n == 11:
+            if self.n == 11:
                 widget.setCurrentIndex(widget.currentIndex() - 2)
                 self.clear_screen()
 
@@ -314,14 +321,15 @@ class Pillow(QtWidgets.QMainWindow):
 
             if self.double_right == 2:
                 self.double_right = 0
-                self.ui_pillow.cnt -= 1
+                self.cnt -= 1
                 self.ui_pillow.cat.setStyleSheet(
-                    "background-image: url(:/back/sprites/cat-" + str(self.ui_marker.cnt) + ".png);")
+                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
 
         elif self.ui_pillow.word.text() not in self.words:
-            if self.ui_pillow.cnt < 5:
-                self.ui_pillow.cnt += 1
-                self.ui_pillow.cat.setStyleSheet("background-image: url(:/back/sprites/cat-" + str(self.ui_pillow.cnt) + ".png);")
+            if self.cnt < 5:
+                self.double_right = 0
+                self.cnt += 1
+                self.ui_pillow.cat.setStyleSheet("background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
             else:
                 widget.setCurrentIndex(widget.currentIndex() - 3)
                 self.clear_screen()
@@ -353,11 +361,11 @@ class Pillow(QtWidgets.QMainWindow):
         self.ui_pillow.btna.setEnabled(False)
 
     def clear_screen(self):
-        self.ui_pillow.n = 0
+        self.n = 0
         self.double_right = 0
-        self.ui_pillow.count.setText(str(self.ui_pillow.n) + "/11 СЛОВ")
-        self.ui_pillow.cnt = 1
-        self.ui_pillow.cat.setStyleSheet("background-image: url(:/back/sprites/cat-" + str(self.ui_pillow.cnt) + ".png);")
+        self.ui_pillow.count.setText("0/11 СЛОВ")
+        self.cnt = 0
+        self.ui_pillow.cat.setStyleSheet("background-image: url(:/back/resources/sprites/cat-0.png);")
         self.guessed = []
         self.ui_pillow.rightWords.setText("")
         self.ui_pillow.rightWords_2.setText("")
@@ -396,9 +404,11 @@ class Mokasin(QtWidgets.QMainWindow):
         self.guessed = []
         self.maxrightWords = 0
         self.double_right = 0
+        self.cnt = 0
+        self.n = 0
 
     def mainmenu(self):
-        widget.setCurrentIndex(widget.currentIndex() - 10)
+        widget.setCurrentIndex(widget.currentIndex() - 8)
         self.clear_screen()
 
     def cancel(self):
@@ -418,12 +428,12 @@ class Mokasin(QtWidgets.QMainWindow):
 
         if self.ui_mokasin.word.text() in self.words and self.ui_mokasin.word.text() != "" and self.ui_mokasin.word.text() not in self.guessed:
             self.guessed.append(self.ui_mokasin.word.text())
-            if self.ui_mokasin.cnt > 1:
+            if self.cnt > 1:
                 self.double_right += 1
-            self.ui_mokasin.n += 1
-            self.ui_mokasin.count.setText(str(self.ui_mokasin.n) + "/11 СЛОВ")
+            self.n += 1
+            self.ui_mokasin.count.setText(str(self.n) + "/11 СЛОВ")
 
-            if self.ui_mokasin.n == 11:
+            if self.n == 11:
                 widget.setCurrentIndex(widget.currentIndex() - 3)
                 self.clear_screen()
 
@@ -436,15 +446,16 @@ class Mokasin(QtWidgets.QMainWindow):
 
             if self.double_right == 2:
                 self.double_right = 0
-                self.ui_mokasin.cnt -= 1
+                self.cnt -= 1
                 self.ui_mokasin.cat.setStyleSheet(
-                    "background-image: url(:/back/sprites/cat-" + str(self.ui_mokasin.cnt) + ".png);")
+                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
 
         elif self.ui_mokasin.word.text() not in self.words:
-            if self.ui_mokasin.cnt < 5:
-                self.ui_mokasin.cnt += 1
+            if self.cnt < 5:
+                self.double_right = 0
+                self.cnt += 1
                 self.ui_mokasin.cat.setStyleSheet(
-                    "background-image: url(:/back/sprites/cat-" + str(self.ui_mokasin.cnt) + ".png);")
+                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
             else:
                 widget.setCurrentIndex(widget.currentIndex() - 4)
                 self.clear_screen()
@@ -483,12 +494,12 @@ class Mokasin(QtWidgets.QMainWindow):
 
 
     def clear_screen(self):
-        self.ui_mokasin.n = 0
+        self.n = 0
         self.double_right = 0
-        self.ui_mokasin.count.setText(str(self.ui_mokasin.n) + "/11 СЛОВ")
-        self.ui_mokasin.cnt = 1
+        self.ui_mokasin.count.setText("0/11 СЛОВ")
+        self.cnt = 0
         self.ui_mokasin.cat.setStyleSheet(
-            "background-image: url(:/back/sprites/cat-" + str(self.ui_mokasin.cnt) + ".png);")
+            "background-image: url(:/back/resources/sprites/cat-0.png);")
         self.guessed = []
         self.ui_mokasin.rightWords.setText("")
         self.ui_mokasin.rightWords_2.setText("")
@@ -516,10 +527,10 @@ class Lose(QtWidgets.QMainWindow):
         self.ui_lose.btnreturne.clicked.connect(self.returne)
 
     def mainmenu(self):
-        widget.setCurrentIndex(widget.currentIndex() - 6)
+        widget.setCurrentIndex(widget.currentIndex() - 4)
 
     def returne(self):
-        widget.setCurrentIndex(widget.currentIndex() + number_level - 6)
+        widget.setCurrentIndex(widget.currentIndex() + number_level - 4)
 
 
 class Win(QtWidgets.QMainWindow):
@@ -532,10 +543,10 @@ class Win(QtWidgets.QMainWindow):
         self.ui_win.btnreturn.clicked.connect(self.returne)
 
     def mainmenu(self):
-        widget.setCurrentIndex(widget.currentIndex() - 7)
+        widget.setCurrentIndex(widget.currentIndex() - 5)
 
     def returne(self):
-        widget.setCurrentIndex(widget.currentIndex() + number_level - 7)
+        widget.setCurrentIndex(widget.currentIndex() + number_level - 5)
 
 
 def center_widget():
@@ -551,9 +562,7 @@ if __name__ == '__main__':
 
     mainmenu_screen = Mainmenu()
     settings_screen = Settings()
-    rule_1_screen = Rule_1()
-    rule_2_screen = Rule_2()
-    rule_3_screen = Rule_3()
+    rules_screen = Rules()
     exit_screen = Exit()
     lose_screen = Lose()
     win_screen = Win()
@@ -563,15 +572,13 @@ if __name__ == '__main__':
 
     widget.addWidget(mainmenu_screen)   # 0
     widget.addWidget(settings_screen)   # 1
-    widget.addWidget(rule_1_screen)     # 2
-    widget.addWidget(rule_2_screen)     # 3
-    widget.addWidget(rule_3_screen)     # 4
-    widget.addWidget(exit_screen)   # 5
-    widget.addWidget(lose_screen)   # 6
-    widget.addWidget(win_screen)    # 7
-    widget.addWidget(marker_screen)     # 8
-    widget.addWidget(pillow_screen)     # 9
-    widget.addWidget(mokasin_screen)    # 10
+    widget.addWidget(rules_screen)     # 2
+    widget.addWidget(exit_screen)   # 3
+    widget.addWidget(lose_screen)   # 4
+    widget.addWidget(win_screen)    # 5
+    widget.addWidget(marker_screen)     # 6
+    widget.addWidget(pillow_screen)     # 7
+    widget.addWidget(mokasin_screen)    # 8
 
     widget.show()
     center_widget()

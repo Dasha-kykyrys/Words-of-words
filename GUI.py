@@ -14,7 +14,7 @@ class Ui_mainmenu(object):
         mainmenu.setFocusPolicy(QtCore.Qt.NoFocus)
         mainmenu.setAutoFillBackground(False)
         mainmenu.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/mainmenu.png);\n"
+"border-image: url(:/back/resources/sprites/mainmenu.png);\n"
 "border-position:center;\n"
 "}\n"
 "")
@@ -35,11 +35,11 @@ class Ui_mainmenu(object):
         self.settings.setMinimumSize(QtCore.QSize(329, 89))
         self.settings.setMaximumSize(QtCore.QSize(329, 89))
         self.settings.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/btsettings.png);\n"
+"border-image: url(:/back/resources/sprites/btsettings.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressbtsettings.png);\n"
+"border-image: url(:/back/resources/sprites/pressbtsettings.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}")
@@ -50,11 +50,11 @@ class Ui_mainmenu(object):
         self.rules.setMinimumSize(QtCore.QSize(329, 89))
         self.rules.setMaximumSize(QtCore.QSize(329, 89))
         self.rules.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/btrules.png);\n"
+"border-image: url(:/back/resources/sprites/btrules.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressbtrules.png);\n"
+"border-image: url(:/back/resources/sprites/pressbtrules.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}")
@@ -67,11 +67,11 @@ class Ui_mainmenu(object):
         self.exit.setMinimumSize(QtCore.QSize(329, 89))
         self.exit.setMaximumSize(QtCore.QSize(329, 89))
         self.exit.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/btexit.png);\n"
+"border-image: url(:/back/resources/sprites/btexit.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressbtexit.png);\n"
+"border-image: url(:/back/resources/sprites/pressbtexit.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}")
@@ -85,13 +85,13 @@ class Ui_mainmenu(object):
         self.play.setMaximumSize(QtCore.QSize(329, 89))
         self.play.setAutoFillBackground(False)
         self.play.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/btplay.png);\n"
+"border-image: url(:/back/resources/sprites/btplay.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressbtplay.png);\n"
+"border-image: url(:/back/resources/sprites/pressbtplay.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -118,7 +118,7 @@ class Ui_exit(object):
         exit.setMinimumSize(QtCore.QSize(1440, 1024))
         exit.setMaximumSize(QtCore.QSize(16777215, 16777215))
         exit.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/exit.png);\n"
+"border-image: url(:/back/resources/sprites/exit.png);\n"
 "border-position: center;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(exit)
@@ -135,12 +135,12 @@ class Ui_exit(object):
         self.yes.setMinimumSize(QtCore.QSize(144, 67))
         self.yes.setMaximumSize(QtCore.QSize(144, 67))
         self.yes.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/Yes.png);\n"
+"background-image: url(:/back/resources/sprites/Yes.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressYes.png);\n"
+"background-image: url(:/back/resources/sprites/pressYes.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -157,12 +157,12 @@ class Ui_exit(object):
         self.no.setMinimumSize(QtCore.QSize(144, 67))
         self.no.setMaximumSize(QtCore.QSize(144, 67))
         self.no.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/No.png);\n"
+"background-image: url(:/back/resources/sprites/No.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressNo.png);\n"
+"background-image: url(:/back/resources/sprites/pressNo.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -180,95 +180,16 @@ class Ui_exit(object):
         _translate = QtCore.QCoreApplication.translate
         exit.setWindowTitle(_translate("exit", "MainWindow"))
 
-class Ui_rule_1(object):
-    def setupUi(self, rule_1):
-        rule_1.setObjectName("rule_1")
-        rule_1.resize(1440, 1024)
-        rule_1.setMinimumSize(QtCore.QSize(1440, 1024))
-        rule_1.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/rules-1.png);\n"
+class Ui_rule(object):
+    def setupUi(self, rule):
+        rule.setObjectName("rule")
+        rule.resize(1440, 1024)
+        rule.setMinimumSize(QtCore.QSize(1440, 1024))
+        rule.setStyleSheet("QMainWindow{\n"
+"border-image: url(:/back/resources/sprites/rules-1.png);\n"
 "border-position: center;\n"
 "}")
-        self.centralwidget = QtWidgets.QWidget(rule_1)
-        self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName("gridLayout")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setSpacing(31)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setMinimumSize(QtCore.QSize(85, 77))
-        self.label.setMaximumSize(QtCore.QSize(85, 77))
-        self.label.setStyleSheet("background-image: url(:/back/sprites/leftoff.png);")
-        self.label.setText("")
-        self.label.setObjectName("label")
-        self.horizontalLayout.addWidget(self.label)
-        self.btnrigth = QtWidgets.QPushButton(self.centralwidget)
-        self.btnrigth.setMinimumSize(QtCore.QSize(85, 77))
-        self.btnrigth.setMaximumSize(QtCore.QSize(85, 77))
-        self.btnrigth.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/right.png);\n"
-"border: none;\n"
-"border-radus: 9px;}\n"
-"\n"
-"QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressright.png);\n"
-"border: none;\n"
-"border-radus: 9px;\n"
-"}\n"
-"")
-        self.btnrigth.setText("")
-        self.btnrigth.setObjectName("btnrigth")
-        self.horizontalLayout.addWidget(self.btnrigth)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.btnmainmenu = QtWidgets.QPushButton(self.centralwidget)
-        self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
-        self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
-        self.btnmainmenu.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/btmainmenu.png);\n"
-"border: none;\n"
-"border-radus: 9px;}\n"
-"\n"
-"QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
-"border: none;\n"
-"border-radus: 9px;\n"
-"}\n"
-"")
-        self.btnmainmenu.setText("")
-        self.btnmainmenu.setObjectName("btnmainmenu")
-        self.horizontalLayout_2.addWidget(self.btnmainmenu)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem2)
-        self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem3, 1, 0, 1, 1)
-        rule_1.setCentralWidget(self.centralwidget)
-
-        self.retranslateUi(rule_1)
-        QtCore.QMetaObject.connectSlotsByName(rule_1)
-
-    def retranslateUi(self, rule_1):
-        _translate = QtCore.QCoreApplication.translate
-        rule_1.setWindowTitle(_translate("rule_1", "MainWindow"))
-        self.btnmainmenu.setToolTip(_translate("rule_1", "меню"))
-
-class Ui_rule_2(object):
-    def setupUi(self, rule_2):
-        rule_2.setObjectName("rule_2")
-        rule_2.resize(1440, 1024)
-        rule_2.setMinimumSize(QtCore.QSize(1440, 1024))
-        rule_2.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/rules-2.png);\n"
-"border-position: center;\n"
-"}")
-        self.centralwidget = QtWidgets.QWidget(rule_2)
+        self.centralwidget = QtWidgets.QWidget(rule)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -281,12 +202,18 @@ class Ui_rule_2(object):
         self.btnleft.setMinimumSize(QtCore.QSize(85, 77))
         self.btnleft.setMaximumSize(QtCore.QSize(85, 77))
         self.btnleft.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/left.png);\n"
+"background-image: url(:/back/resources/sprites/left.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressleft.png);\n"
+"background-image: url(:/back/resources/sprites/pressleft.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/leftoff.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}")
@@ -297,12 +224,18 @@ class Ui_rule_2(object):
         self.btnright.setMinimumSize(QtCore.QSize(85, 77))
         self.btnright.setMaximumSize(QtCore.QSize(85, 77))
         self.btnright.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/right.png);\n"
+"background-image: url(:/back/resources/sprites/right.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressright.png);\n"
+"background-image: url(:/back/resources/sprites/pressright.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/rightoff.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -319,12 +252,12 @@ class Ui_rule_2(object):
         self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/btmainmenu.png);\n"
+"background-image: url(:/back/resources/sprites/btmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"background-image: url(:/back/resources/sprites/pressbtmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -337,93 +270,15 @@ class Ui_rule_2(object):
         self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem3, 1, 0, 1, 1)
-        rule_2.setCentralWidget(self.centralwidget)
+        rule.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(rule_2)
-        QtCore.QMetaObject.connectSlotsByName(rule_2)
+        self.retranslateUi(rule)
+        QtCore.QMetaObject.connectSlotsByName(rule)
 
-    def retranslateUi(self, rule_2):
+    def retranslateUi(self, rule):
         _translate = QtCore.QCoreApplication.translate
-        rule_2.setWindowTitle(_translate("rule_2", "MainWindow"))
-        self.btnmainmenu.setToolTip(_translate("rule_2", "меню"))
-
-class Ui_rule_3(object):
-    def setupUi(self, rule_3):
-        rule_3.setObjectName("rule_3")
-        rule_3.resize(1440, 1024)
-        rule_3.setMinimumSize(QtCore.QSize(1440, 1024))
-        rule_3.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/rules-3.png);\n"
-"border-position: center;\n"
-"}")
-        self.centralwidget = QtWidgets.QWidget(rule_3)
-        self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName("gridLayout")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setSpacing(31)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.btnleft = QtWidgets.QPushButton(self.centralwidget)
-        self.btnleft.setMinimumSize(QtCore.QSize(85, 77))
-        self.btnleft.setMaximumSize(QtCore.QSize(85, 77))
-        self.btnleft.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/left.png);\n"
-"border: none;\n"
-"border-radus: 9px;}\n"
-"\n"
-"QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressleft.png);\n"
-"border: none;\n"
-"border-radus: 9px;\n"
-"}")
-        self.btnleft.setText("")
-        self.btnleft.setObjectName("btnleft")
-        self.horizontalLayout.addWidget(self.btnleft)
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setMinimumSize(QtCore.QSize(85, 77))
-        self.label.setMaximumSize(QtCore.QSize(85, 77))
-        self.label.setStyleSheet("background-image: url(:/back/sprites/rightoff.png);")
-        self.label.setText("")
-        self.label.setObjectName("label")
-        self.horizontalLayout.addWidget(self.label)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.btnmainmenu = QtWidgets.QPushButton(self.centralwidget)
-        self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
-        self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
-        self.btnmainmenu.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/btmainmenu.png);\n"
-"border: none;\n"
-"border-radus: 9px;}\n"
-"\n"
-"QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
-"border: none;\n"
-"border-radus: 9px;\n"
-"}\n"
-"")
-        self.btnmainmenu.setText("")
-        self.btnmainmenu.setObjectName("btnmainmenu")
-        self.horizontalLayout_2.addWidget(self.btnmainmenu)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem2)
-        self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem3, 1, 0, 1, 1)
-        rule_3.setCentralWidget(self.centralwidget)
-
-        self.retranslateUi(rule_3)
-        QtCore.QMetaObject.connectSlotsByName(rule_3)
-
-    def retranslateUi(self, rule_3):
-        _translate = QtCore.QCoreApplication.translate
-        rule_3.setWindowTitle(_translate("rule_3", "MainWindow"))
-        self.btnmainmenu.setToolTip(_translate("rule_3", "меню"))
+        rule.setWindowTitle(_translate("rule", "MainWindow"))
+        self.btnmainmenu.setToolTip(_translate("rule", "меню"))
 
 class Ui_settings(object):
     def setupUi(self, settings):
@@ -431,7 +286,7 @@ class Ui_settings(object):
         settings.resize(1440, 1024)
         settings.setMinimumSize(QtCore.QSize(1440, 1024))
         settings.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/settings.png);\n"
+"border-image: url(:/back/resources/sprites/settings.png);\n"
 "border-position: center;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(settings)
@@ -446,13 +301,13 @@ class Ui_settings(object):
         self.btnon.setMinimumSize(QtCore.QSize(182, 84))
         self.btnon.setMaximumSize(QtCore.QSize(182, 84))
         self.btnon.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/On.png);\n"
+"border-image: url(:/back/resources/sprites/On.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressOn.png);\n"
+"border-image: url(:/back/resources/sprites/pressOn.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -465,13 +320,13 @@ class Ui_settings(object):
         self.btnoff.setMinimumSize(QtCore.QSize(182, 84))
         self.btnoff.setMaximumSize(QtCore.QSize(182, 84))
         self.btnoff.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/Off.png);\n"
+"border-image: url(:/back/resources/sprites/Off.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressOff.png);\n"
+"border-image: url(:/back/resources/sprites/pressOff.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -488,12 +343,12 @@ class Ui_settings(object):
         self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/btmainmenu.png);\n"
+"background-image: url(:/back/resources/sprites/btmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"background-image: url(:/back/resources/sprites/pressbtmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -516,13 +371,13 @@ class Ui_settings(object):
         self.btnon_2.setMinimumSize(QtCore.QSize(182, 84))
         self.btnon_2.setMaximumSize(QtCore.QSize(182, 84))
         self.btnon_2.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/On.png);\n"
+"border-image: url(:/back/resources/sprites/On.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressOn.png);\n"
+"border-image: url(:/back/resources/sprites/pressOn.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -535,13 +390,13 @@ class Ui_settings(object):
         self.btnoff_2.setMinimumSize(QtCore.QSize(182, 84))
         self.btnoff_2.setMaximumSize(QtCore.QSize(182, 84))
         self.btnoff_2.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/Off.png);\n"
+"border-image: url(:/back/resources/sprites/Off.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressOff.png);\n"
+"border-image: url(:/back/resources/sprites/pressOff.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -568,7 +423,7 @@ class Ui_marker(object):
         marker.setMinimumSize(QtCore.QSize(1440, 1024))
         marker.setToolTip("")
         marker.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/level.png);\n"
+"border-image: url(:/back/resources/sprites/level.png);\n"
 "border-position: center;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(marker)
@@ -628,8 +483,7 @@ class Ui_marker(object):
         self.cat = QtWidgets.QLabel(self.centralwidget)
         self.cat.setMinimumSize(QtCore.QSize(627, 636))
         self.cat.setMaximumSize(QtCore.QSize(627, 636))
-        self.cnt = 0
-        self.cat.setStyleSheet("background-image: url(:/back/sprites/cat-" + str(self.cnt) + ".png);")
+        self.cat.setStyleSheet("background-image: url(:/back/resources/sprites/cat-0.png);")
         self.cat.setText("")
         self.cat.setObjectName("cat")
         self.horizontalLayout_3.addWidget(self.cat)
@@ -649,12 +503,12 @@ class Ui_marker(object):
         self.btnf.setMinimumSize(QtCore.QSize(107, 95))
         self.btnf.setMaximumSize(QtCore.QSize(107, 95))
         self.btnf.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/f.png);\n"
+"background-image: url(:/back/resources/sprites/f.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressf.png);\n"
+"background-image: url(:/back/resources/sprites/pressf.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -666,12 +520,12 @@ class Ui_marker(object):
         self.btnl.setMinimumSize(QtCore.QSize(107, 95))
         self.btnl.setMaximumSize(QtCore.QSize(107, 95))
         self.btnl.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/l.png);\n"
+"background-image: url(:/back/resources/sprites/l.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressl.png);\n"
+"background-image: url(:/back/resources/sprites/pressl.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -683,12 +537,12 @@ class Ui_marker(object):
         self.btno.setMinimumSize(QtCore.QSize(107, 95))
         self.btno.setMaximumSize(QtCore.QSize(107, 95))
         self.btno.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/o.png);\n"
+"background-image: url(:/back/resources/sprites/o.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presso.png);\n"
+"background-image: url(:/back/resources/sprites/presso.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -700,12 +554,12 @@ class Ui_marker(object):
         self.btnm.setMinimumSize(QtCore.QSize(107, 95))
         self.btnm.setMaximumSize(QtCore.QSize(107, 95))
         self.btnm.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/m.png);\n"
+"background-image: url(:/back/resources/sprites/m.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressm.png);\n"
+"background-image: url(:/back/resources/sprites/pressm.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -717,12 +571,12 @@ class Ui_marker(object):
         self.btna.setMinimumSize(QtCore.QSize(107, 95))
         self.btna.setMaximumSize(QtCore.QSize(107, 95))
         self.btna.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/a.png);\n"
+"background-image: url(:/back/resources/sprites/a.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressa.png);\n"
+"background-image: url(:/back/resources/sprites/pressa.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -734,12 +588,12 @@ class Ui_marker(object):
         self.btns.setMinimumSize(QtCore.QSize(107, 95))
         self.btns.setMaximumSize(QtCore.QSize(107, 95))
         self.btns.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/s.png);\n"
+"background-image: url(:/back/resources/sprites/s.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presss.png);\n"
+"background-image: url(:/back/resources/sprites/presss.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -751,12 +605,12 @@ class Ui_marker(object):
         self.btnt.setMinimumSize(QtCore.QSize(107, 95))
         self.btnt.setMaximumSize(QtCore.QSize(107, 95))
         self.btnt.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/t.png);\n"
+"background-image: url(:/back/resources/sprites/t.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presst.png);\n"
+"background-image: url(:/back/resources/sprites/presst.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -768,12 +622,12 @@ class Ui_marker(object):
         self.btne.setMinimumSize(QtCore.QSize(107, 95))
         self.btne.setMaximumSize(QtCore.QSize(107, 95))
         self.btne.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/e.png);\n"
+"background-image: url(:/back/resources/sprites/e.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presse.png);\n"
+"background-image: url(:/back/resources/sprites/presse.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -784,12 +638,12 @@ class Ui_marker(object):
         self.btnr = QtWidgets.QPushButton(self.centralwidget)
         self.btnr.setMinimumSize(QtCore.QSize(107, 95))
         self.btnr.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/r.png);\n"
+"background-image: url(:/back/resources/sprites/r.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressr.png);\n"
+"background-image: url(:/back/resources/sprites/pressr.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -806,12 +660,12 @@ class Ui_marker(object):
         self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/btmainmenu.png);\n"
+"background-image: url(:/back/resources/sprites/btmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"background-image: url(:/back/resources/sprites/pressbtmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -863,12 +717,12 @@ class Ui_marker(object):
         self.confirm.setMinimumSize(QtCore.QSize(107, 95))
         self.confirm.setMaximumSize(QtCore.QSize(107, 95))
         self.confirm.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/confirm.png);\n"
+"background-image: url(:/back/resources/sprites/confirm.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressconfirm.png);\n"
+"background-image: url(:/back/resources/sprites/pressconfirm.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -880,12 +734,12 @@ class Ui_marker(object):
         self.cancel.setMinimumSize(QtCore.QSize(107, 95))
         self.cancel.setMaximumSize(QtCore.QSize(107, 95))
         self.cancel.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/cancel.png);\n"
+"background-image: url(:/back/resources/sprites/cancel.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presscancel.png);\n"
+"background-image: url(:/back/resources/sprites/presscancel.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -908,11 +762,10 @@ class Ui_marker(object):
         _translate = QtCore.QCoreApplication.translate
         marker.setWindowTitle(_translate("marker", "MainWindow"))
         self.label.setText(_translate("marker", "ОТГАДАНО:"))
-        self.n = 0
-        self.count.setText(_translate("pillow", str(self.n) + "/11 СЛОВ"))
+        self.count.setText(_translate("marker", "0/12 СЛОВ"))
         self.confirm.setToolTip(_translate("marker", "подтверждение"))
         self.cancel.setToolTip(_translate("marker", "отмена"))
-        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
+        self.btnmainmenu.setToolTip(_translate("marker", "меню"))
 
 
 class Ui_pillow(object):
@@ -922,7 +775,7 @@ class Ui_pillow(object):
         pillow.setMinimumSize(QtCore.QSize(1440, 1024))
         pillow.setToolTip("")
         pillow.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/level.png);\n"
+"border-image: url(:/back/resources/sprites/level.png);\n"
 "border-position: center;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(pillow)
@@ -964,12 +817,12 @@ class Ui_pillow(object):
         self.confirm.setMinimumSize(QtCore.QSize(107, 95))
         self.confirm.setMaximumSize(QtCore.QSize(107, 95))
         self.confirm.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/confirm.png);\n"
+"background-image: url(:/back/resources/sprites/confirm.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressconfirm.png);\n"
+"background-image: url(:/back/resources/sprites/pressconfirm.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -981,12 +834,12 @@ class Ui_pillow(object):
         self.cancel.setMinimumSize(QtCore.QSize(107, 95))
         self.cancel.setMaximumSize(QtCore.QSize(107, 95))
         self.cancel.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/cancel.png);\n"
+"background-image: url(:/back/resources/sprites/cancel.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presscancel.png);\n"
+"background-image: url(:/back/resources/sprites/presscancel.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1047,8 +900,7 @@ class Ui_pillow(object):
         self.cat = QtWidgets.QLabel(self.centralwidget)
         self.cat.setMinimumSize(QtCore.QSize(627, 636))
         self.cat.setMaximumSize(QtCore.QSize(627, 636))
-        self.cnt = 0
-        self.cat.setStyleSheet("background-image: url(:/back/sprites/cat-" + str(self.cnt) + ".png);")
+        self.cat.setStyleSheet("background-image: url(:/back/resources/sprites/cat-0.png);")
         self.cat.setText("")
         self.cat.setObjectName("cat")
         self.horizontalLayout_3.addWidget(self.cat)
@@ -1068,12 +920,12 @@ class Ui_pillow(object):
         self.btnp.setMinimumSize(QtCore.QSize(107, 95))
         self.btnp.setMaximumSize(QtCore.QSize(107, 95))
         self.btnp.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/p.png);\n"
+"background-image: url(:/back/resources/sprites/p.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressp.png);\n"
+"background-image: url(:/back/resources/sprites/pressp.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1085,12 +937,12 @@ class Ui_pillow(object):
         self.btno.setMinimumSize(QtCore.QSize(107, 95))
         self.btno.setMaximumSize(QtCore.QSize(107, 95))
         self.btno.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/o.png);\n"
+"background-image: url(:/back/resources/sprites/o.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presso.png);\n"
+"background-image: url(:/back/resources/sprites/presso.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1102,12 +954,12 @@ class Ui_pillow(object):
         self.btnd.setMinimumSize(QtCore.QSize(107, 95))
         self.btnd.setMaximumSize(QtCore.QSize(107, 95))
         self.btnd.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/d.png);\n"
+"background-image: url(:/back/resources/sprites/d.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressd.png);\n"
+"background-image: url(:/back/resources/sprites/pressd.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1119,12 +971,12 @@ class Ui_pillow(object):
         self.btny.setMinimumSize(QtCore.QSize(107, 95))
         self.btny.setMaximumSize(QtCore.QSize(107, 95))
         self.btny.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/y.png);\n"
+"background-image: url(:/back/resources/sprites/y.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressy.png);\n"
+"background-image: url(:/back/resources/sprites/pressy.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1136,12 +988,12 @@ class Ui_pillow(object):
         self.btnsh.setMinimumSize(QtCore.QSize(107, 95))
         self.btnsh.setMaximumSize(QtCore.QSize(107, 95))
         self.btnsh.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/sh.png);\n"
+"background-image: url(:/back/resources/sprites/sh.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presssh.png);\n"
+"background-image: url(:/back/resources/sprites/presssh.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1153,12 +1005,12 @@ class Ui_pillow(object):
         self.btnk.setMinimumSize(QtCore.QSize(107, 95))
         self.btnk.setMaximumSize(QtCore.QSize(107, 95))
         self.btnk.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/k.png);\n"
+"background-image: url(:/back/resources/sprites/k.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressk.png);\n"
+"background-image: url(:/back/resources/sprites/pressk.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1170,12 +1022,12 @@ class Ui_pillow(object):
         self.btna.setMinimumSize(QtCore.QSize(107, 95))
         self.btna.setMaximumSize(QtCore.QSize(107, 95))
         self.btna.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/a.png);\n"
+"background-image: url(:/back/resources/sprites/a.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressa.png);\n"
+"background-image: url(:/back/resources/sprites/pressa.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1192,12 +1044,12 @@ class Ui_pillow(object):
         self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/btmainmenu.png);\n"
+"background-image: url(:/back/resources/sprites/btmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"background-image: url(:/back/resources/sprites/pressbtmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1227,11 +1079,10 @@ class Ui_pillow(object):
         _translate = QtCore.QCoreApplication.translate
         pillow.setWindowTitle(_translate("pillow", "MainWindow"))
         self.label.setText(_translate("pillow", "ОТГАДАНО:"))
-        self.n = 0
-        self.count.setText(_translate("pillow", str(self.n) + "/11 СЛОВ"))
+        self.count.setText(_translate("pillow", "0/11 СЛОВ"))
         self.confirm.setToolTip(_translate("pillow", "подтверждение"))
         self.cancel.setToolTip(_translate("pillow", "отмена"))
-        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
+        self.btnmainmenu.setToolTip(_translate("pillow", "меню"))
 
 class Ui_mokasin(object):
     def setupUi(self, mokasin):
@@ -1240,7 +1091,7 @@ class Ui_mokasin(object):
         mokasin.setMinimumSize(QtCore.QSize(1440, 1024))
         mokasin.setToolTip("")
         mokasin.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/level.png);\n"
+"border-image: url(:/back/resources/sprites/level.png);\n"
 "border-position: center;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(mokasin)
@@ -1282,12 +1133,12 @@ class Ui_mokasin(object):
         self.confirm.setMinimumSize(QtCore.QSize(107, 95))
         self.confirm.setMaximumSize(QtCore.QSize(107, 95))
         self.confirm.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/confirm.png);\n"
+"background-image: url(:/back/resources/sprites/confirm.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressconfirm.png);\n"
+"background-image: url(:/back/resources/sprites/pressconfirm.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1300,12 +1151,12 @@ class Ui_mokasin(object):
         self.cancel.setMaximumSize(QtCore.QSize(107, 95))
         self.cancel.setToolTipDuration(-1)
         self.cancel.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/cancel.png);\n"
+"background-image: url(:/back/resources/sprites/cancel.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presscancel.png);\n"
+"background-image: url(:/back/resources/sprites/presscancel.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1367,8 +1218,7 @@ class Ui_mokasin(object):
         self.cat = QtWidgets.QLabel(self.centralwidget)
         self.cat.setMinimumSize(QtCore.QSize(627, 636))
         self.cat.setMaximumSize(QtCore.QSize(627, 636))
-        self.cnt = 0
-        self.cat.setStyleSheet("background-image: url(:/back/sprites/cat-" + str(self.cnt) + ".png);")
+        self.cat.setStyleSheet("background-image: url(:/back/resources/sprites/cat-0.png);")
         self.cat.setText("")
         self.cat.setObjectName("cat")
         self.horizontalLayout_3.addWidget(self.cat)
@@ -1388,12 +1238,12 @@ class Ui_mokasin(object):
         self.btnm.setMinimumSize(QtCore.QSize(107, 95))
         self.btnm.setMaximumSize(QtCore.QSize(107, 95))
         self.btnm.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/m.png);\n"
+"background-image: url(:/back/resources/sprites/m.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressm.png);\n"
+"background-image: url(:/back/resources/sprites/pressm.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1405,12 +1255,12 @@ class Ui_mokasin(object):
         self.btno.setMinimumSize(QtCore.QSize(107, 95))
         self.btno.setMaximumSize(QtCore.QSize(107, 95))
         self.btno.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/o.png);\n"
+"background-image: url(:/back/resources/sprites/o.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presso.png);\n"
+"background-image: url(:/back/resources/sprites/presso.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1422,12 +1272,12 @@ class Ui_mokasin(object):
         self.btnk.setMinimumSize(QtCore.QSize(107, 95))
         self.btnk.setMaximumSize(QtCore.QSize(107, 95))
         self.btnk.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/k.png);\n"
+"background-image: url(:/back/resources/sprites/k.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressk.png);\n"
+"background-image: url(:/back/resources/sprites/pressk.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1439,12 +1289,12 @@ class Ui_mokasin(object):
         self.btna.setMinimumSize(QtCore.QSize(107, 95))
         self.btna.setMaximumSize(QtCore.QSize(107, 95))
         self.btna.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/a.png);\n"
+"background-image: url(:/back/resources/sprites/a.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressa.png);\n"
+"background-image: url(:/back/resources/sprites/pressa.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1456,12 +1306,12 @@ class Ui_mokasin(object):
         self.btns.setMinimumSize(QtCore.QSize(107, 95))
         self.btns.setMaximumSize(QtCore.QSize(107, 95))
         self.btns.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/s.png);\n"
+"background-image: url(:/back/resources/sprites/s.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/presss.png);\n"
+"background-image: url(:/back/resources/sprites/presss.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1473,12 +1323,12 @@ class Ui_mokasin(object):
         self.btni.setMinimumSize(QtCore.QSize(107, 95))
         self.btni.setMaximumSize(QtCore.QSize(107, 95))
         self.btni.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/i.png);\n"
+"background-image: url(:/back/resources/sprites/i.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressi.png);\n"
+"background-image: url(:/back/resources/sprites/pressi.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1490,12 +1340,12 @@ class Ui_mokasin(object):
         self.btnn.setMinimumSize(QtCore.QSize(107, 95))
         self.btnn.setMaximumSize(QtCore.QSize(107, 95))
         self.btnn.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/n.png);\n"
+"background-image: url(:/back/resources/sprites/n.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressn.png);\n"
+"background-image: url(:/back/resources/sprites/pressn.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1512,12 +1362,12 @@ class Ui_mokasin(object):
         self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setStyleSheet("QPushButton{\n"
-"background-image: url(:/back/sprites/btmainmenu.png);\n"
+"background-image: url(:/back/resources/sprites/btmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;}\n"
 "\n"
 "QPushButton:hover{\n"
-"background-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"background-image: url(:/back/resources/sprites/pressbtmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1548,10 +1398,9 @@ class Ui_mokasin(object):
         mokasin.setWindowTitle(_translate("mokasin", "MainWindow"))
         self.confirm.setToolTip(_translate("mokasin", "подтверждение"))
         self.cancel.setToolTip(_translate("mokasin", "отмена"))
-        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
+        self.btnmainmenu.setToolTip(_translate("mokasin", "меню"))
         self.label.setText(_translate("mokasin", "ОТГАДАНО:"))
-        self.n = 0
-        self.count.setText(_translate("pillow", str(self.n) + "/11 СЛОВ"))
+        self.count.setText(_translate("mokasin", "0/11 СЛОВ"))
 
 class Ui_lose(object):
     def setupUi(self, lose):
@@ -1559,7 +1408,7 @@ class Ui_lose(object):
         lose.resize(1440, 1024)
         lose.setMinimumSize(QtCore.QSize(1440, 1024))
         lose.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/goLose.png);\n"
+"border-image: url(:/back/resources/sprites/goLose.png);\n"
 "border-position:center;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(lose)
@@ -1574,13 +1423,13 @@ class Ui_lose(object):
         self.btnreturne.setMinimumSize(QtCore.QSize(107, 95))
         self.btnreturne.setMaximumSize(QtCore.QSize(107, 95))
         self.btnreturne.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/repeat.png);\n"
+"border-image: url(:/back/resources/sprites/repeat.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressrepeat.png);\n"
+"border-image: url(:/back/resources/sprites/pressrepeat.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1592,13 +1441,13 @@ class Ui_lose(object):
         self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/btmainmenu.png);\n"
+"border-image: url(:/back/resources/sprites/btmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"border-image: url(:/back/resources/sprites/pressbtmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1619,8 +1468,8 @@ class Ui_lose(object):
     def retranslateUi(self, lose):
         _translate = QtCore.QCoreApplication.translate
         lose.setWindowTitle(_translate("lose", "MainWindow"))
-        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
-        self.btnreturne.setToolTip(_translate("settings", "повторить"))
+        self.btnmainmenu.setToolTip(_translate("lose", "меню"))
+        self.btnreturne.setToolTip(_translate("lose", "повторить"))
 
 class Ui_win(object):
     def setupUi(self, win):
@@ -1628,7 +1477,7 @@ class Ui_win(object):
         win.resize(1440, 1024)
         win.setMinimumSize(QtCore.QSize(1440, 1024))
         win.setStyleSheet("QMainWindow{\n"
-"border-image: url(:/back/sprites/goWin.png);\n"
+"border-image: url(:/back/resources/sprites/goWin.png);\n"
 "border-position: center;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(win)
@@ -1643,13 +1492,13 @@ class Ui_win(object):
         self.btnreturn.setMinimumSize(QtCore.QSize(107, 95))
         self.btnreturn.setMaximumSize(QtCore.QSize(107, 95))
         self.btnreturn.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/repeat.png);\n"
+"border-image: url(:/back/resources/sprites/repeat.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressrepeat.png);\n"
+"border-image: url(:/back/resources/sprites/pressrepeat.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1661,13 +1510,13 @@ class Ui_win(object):
         self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
         self.btnmainmenu.setStyleSheet("QPushButton{\n"
-"border-image: url(:/back/sprites/btmainmenu.png);\n"
+"border-image: url(:/back/resources/sprites/btmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"border-image: url(:/back/sprites/pressbtmainmenu.png);\n"
+"border-image: url(:/back/resources/sprites/pressbtmainmenu.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1688,8 +1537,7 @@ class Ui_win(object):
     def retranslateUi(self, win):
         _translate = QtCore.QCoreApplication.translate
         win.setWindowTitle(_translate("win", "MainWindow"))
-        self.btnmainmenu.setToolTip(_translate("settings", "меню"))
-        self.btnreturn.setToolTip(_translate("settings", "повторить"))
-
+        self.btnmainmenu.setToolTip(_translate("win", "меню"))
+        self.btnreturn.setToolTip(_translate("win", "повторить"))
 
 import background
