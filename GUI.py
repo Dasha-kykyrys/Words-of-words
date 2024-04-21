@@ -312,6 +312,11 @@ class Ui_settings(object):
 "border-radus: 9px;\n"
 "}\n"
 "\n"
+"QPushButton:disabled{\n"
+"border-image: url(:/back/resources/sprites/Onoff.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
 "")
         self.btnon.setText("")
         self.btnon.setObjectName("btnon")
@@ -330,6 +335,13 @@ class Ui_settings(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"border-image: url(:/back/resources/sprites/Offoff.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
 "\n"
 "")
         self.btnoff.setText("")
@@ -382,6 +394,13 @@ class Ui_settings(object):
 "border-radus: 9px;\n"
 "}\n"
 "\n"
+"QPushButton:disabled{\n"
+"border-image: url(:/back/resources/sprites/Onoff.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"\n"
 "")
         self.btnon_2.setText("")
         self.btnon_2.setObjectName("btnon_2")
@@ -400,6 +419,13 @@ class Ui_settings(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"border-image: url(:/back/resources/sprites/Offoff.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
 "\n"
 "")
         self.btnoff_2.setText("")

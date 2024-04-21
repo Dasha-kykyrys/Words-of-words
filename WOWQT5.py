@@ -1,6 +1,8 @@
 import random
+import time
 
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import QDesktopWidget
 from GUI import Ui_mainmenu, Ui_exit, Ui_pillow, Ui_lose, Ui_win, Ui_marker, Ui_mokasin, Ui_settings, Ui_rule
 
@@ -38,10 +40,25 @@ class Settings(QtWidgets.QMainWindow):
         self.ui_settings = Ui_settings()
         self.ui_settings.setupUi(self)
 
+        self.ui_settings.btnoff.clicked.connect(self.music_off)
+        self.ui_settings.btnon.clicked.connect(self.music_on)
+        self.ui_settings.btnon.setEnabled(False)
+
+        self.ui_settings.btnon_2.setEnabled(False)
         self.ui_settings.btnmainmenu.clicked.connect(self.mainmenu)
 
     def mainmenu(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
+
+    def music_off(self):
+        media_player.stop()
+        self.ui_settings.btnoff.setEnabled(False)
+        self.ui_settings.btnon.setEnabled(True)
+
+    def music_on(self):
+        media_player.play()
+        self.ui_settings.btnon.setEnabled(False)
+        self.ui_settings.btnoff.setEnabled(True)
 
 
 class Rules(QtWidgets.QMainWindow):
@@ -56,7 +73,6 @@ class Rules(QtWidgets.QMainWindow):
         self.ui_rule.btnmainmenu.clicked.connect(self.mainmenu)
 
         self.page = 1
-
 
 
     def rigth(self):
@@ -84,7 +100,6 @@ class Rules(QtWidgets.QMainWindow):
             self.ui_rule.btnright.setEnabled(True)
         if self.page == 1:
             self.ui_rule.btnleft.setEnabled(False)
-
 
     def mainmenu(self):
         widget.setCurrentIndex(widget.currentIndex() - 2)
@@ -556,9 +571,14 @@ def center_widget():
     widget.move(x, y)
 
 
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     widget = QtWidgets.QStackedWidget()
+
+    media_player = QMediaPlayer()
+    media_player.setMedia(QMediaContent(QtCore.QUrl.fromLocalFile("resources\\audio\\Colorful Cat - Rurikon.mp3")))
+    media_player.play()
 
     mainmenu_screen = Mainmenu()
     settings_screen = Settings()
@@ -583,3 +603,5 @@ if __name__ == '__main__':
     widget.show()
     center_widget()
     app.exec()
+
+
