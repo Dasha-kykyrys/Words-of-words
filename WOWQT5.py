@@ -1,8 +1,7 @@
 import random
-import time
 
 from PyQt5 import QtWidgets, QtCore
-from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QDesktopWidget
 from GUI import Ui_mainmenu, Ui_exit, Ui_pillow, Ui_lose, Ui_win, Ui_marker, Ui_mokasin, Ui_settings, Ui_rule
 
@@ -18,19 +17,30 @@ class Mainmenu(QtWidgets.QMainWindow):
         self.ui_window.rules.clicked.connect(self.rules)
         self.ui_window.exit.clicked.connect(self.exit)
 
-    def play(self):
+    @staticmethod
+    def play():
+        if sound_play:
+            sound_player.play()
         global number_level
-
         number_level = random.randint(6, 8)
         widget.setCurrentIndex(widget.currentIndex() + number_level)
 
-    def settings(self):
+    @staticmethod
+    def settings():
+        if sound_play:
+            sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
-    def rules(self):
+    @staticmethod
+    def rules():
+        if sound_play:
+            sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() + 2)
 
-    def exit(self):
+    @staticmethod
+    def exit():
+        if sound_play:
+            sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() + 3)
 
 
@@ -44,21 +54,45 @@ class Settings(QtWidgets.QMainWindow):
         self.ui_settings.btnon.clicked.connect(self.music_on)
         self.ui_settings.btnon.setEnabled(False)
 
+        self.ui_settings.btnoff_2.clicked.connect(self.sound_off)
+        self.ui_settings.btnon_2.clicked.connect(self.sound_on)
         self.ui_settings.btnon_2.setEnabled(False)
+
         self.ui_settings.btnmainmenu.clicked.connect(self.mainmenu)
 
-    def mainmenu(self):
+    @staticmethod
+    def mainmenu():
+        if sound_play:
+            sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
     def music_off(self):
+        if sound_play:
+            sound_player.play()
         media_player.stop()
         self.ui_settings.btnoff.setEnabled(False)
         self.ui_settings.btnon.setEnabled(True)
 
     def music_on(self):
+        if sound_play:
+            sound_player.play()
         media_player.play()
         self.ui_settings.btnon.setEnabled(False)
         self.ui_settings.btnoff.setEnabled(True)
+
+    def sound_off(self):
+        global sound_play
+        if sound_play:
+            sound_player.play()
+        sound_play = False
+        self.ui_settings.btnoff_2.setEnabled(False)
+        self.ui_settings.btnon_2.setEnabled(True)
+
+    def sound_on(self):
+        global sound_play
+        sound_play = True
+        self.ui_settings.btnon_2.setEnabled(False)
+        self.ui_settings.btnoff_2.setEnabled(True)
 
 
 class Rules(QtWidgets.QMainWindow):
@@ -67,15 +101,17 @@ class Rules(QtWidgets.QMainWindow):
         self.ui_rule = Ui_rule()
         self.ui_rule.setupUi(self)
 
-        self.ui_rule.btnright.clicked.connect(self.rigth)
+        self.ui_rule.btnright.clicked.connect(self.right)
         self.ui_rule.btnleft.clicked.connect(self.left)
         self.ui_rule.btnleft.setEnabled(False)
         self.ui_rule.btnmainmenu.clicked.connect(self.mainmenu)
 
         self.page = 1
 
+    def right(self):
+        if sound_play:
+            sound_player.play()
 
-    def rigth(self):
         if self.page != 3:
             self.page += 1
         self.setStyleSheet("QMainWindow{\n"
@@ -89,6 +125,9 @@ class Rules(QtWidgets.QMainWindow):
             self.ui_rule.btnright.setEnabled(False)
 
     def left(self):
+        if sound_play:
+            sound_player.play()
+
         if self.page != 1:
             self.page -= 1
         self.setStyleSheet("QMainWindow{\n"
@@ -102,6 +141,8 @@ class Rules(QtWidgets.QMainWindow):
             self.ui_rule.btnleft.setEnabled(False)
 
     def mainmenu(self):
+        if sound_play:
+            sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() - 2)
         self.ui_rule.btnleft.setEnabled(False)
         self.ui_rule.btnright.setEnabled(True)
@@ -121,10 +162,14 @@ class Exit(QtWidgets.QMainWindow):
         self.ui_exit.yes.clicked.connect(self.yes)
         self.ui_exit.no.clicked.connect(self.no)
 
-    def yes(self):
+    @staticmethod
+    def yes():
         quit()
 
-    def no(self):
+    @staticmethod
+    def no():
+        if sound_play:
+            sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() - 3)
 
 
@@ -154,29 +199,35 @@ class Marker(QtWidgets.QMainWindow):
         self.cnt = 0
         self.n = 0
 
-    def mainmenu(self):
-        widget.setCurrentIndex(widget.currentIndex() - 6)
-        self.clear_screen()
-
-    def cancel(self):
-        self.ui_marker.word.setText("")
-        self.btn_enable()
-
-    def confirm(self):
-        self.dictionary = open("Dictionary.txt", "r", encoding="utf-8")
+        dictionary = open("Dictionary.txt", "r", encoding="utf-8")
         while True:
-            self.words = self.dictionary.readline()
+            self.words = dictionary.readline()
             self.words = self.words.split()
             if "фломастер" in self.words:
                 break
             if not self.words:
                 break
-        self.dictionary.close()
+        dictionary.close()
 
+    def mainmenu(self):
+        if sound_play:
+            sound_player.play()
+        widget.setCurrentIndex(widget.currentIndex() - 6)
+        self.clear_screen()
+
+    def cancel(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_marker.word.setText("")
+        self.btn_enable()
+
+    def confirm(self):
+        if sound_play:
+            sound_player.play()
         if self.ui_marker.word.text() in self.words and self.ui_marker.word.text() != "" and self.ui_marker.word.text() not in self.guessed:
             self.guessed.append(self.ui_marker.word.text())
             self.n += 1
-            if self.cnt > 1:
+            if self.cnt >= 1:
                 self.double_right += 1
             self.ui_marker.count.setText(str(self.n) + "/12 СЛОВ")
 
@@ -212,46 +263,63 @@ class Marker(QtWidgets.QMainWindow):
         self.btn_enable()
 
     def f(self):
+        if sound_play:
+            sound_player.play()
         self.ui_marker.word.setText(self.ui_marker.word.text() + "Ф")
         self.ui_marker.btnf.setEnabled(False)
 
     def l(self):
+        if sound_play:
+            sound_player.play()
         self.ui_marker.word.setText(self.ui_marker.word.text() + "Л")
         self.ui_marker.btnl.setEnabled(False)
 
     def o(self):
+        if sound_play:
+            sound_player.play()
         self.ui_marker.word.setText(self.ui_marker.word.text() + "О")
         self.ui_marker.btno.setEnabled(False)
 
     def m(self):
+        if sound_play:
+            sound_player.play()
         self.ui_marker.word.setText(self.ui_marker.word.text() + "М")
         self.ui_marker.btnm.setEnabled(False)
 
     def a(self):
+        if sound_play:
+            sound_player.play()
         self.ui_marker.word.setText(self.ui_marker.word.text() + "А")
         self.ui_marker.btna.setEnabled(False)
 
     def s(self):
+        if sound_play:
+            sound_player.play()
         self.ui_marker.word.setText(self.ui_marker.word.text() + "С")
         self.ui_marker.btns.setEnabled(False)
 
     def t(self):
+        if sound_play:
+            sound_player.play()
         self.ui_marker.word.setText(self.ui_marker.word.text() + "Т")
         self.ui_marker.btnt.setEnabled(False)
 
     def e(self):
+        if sound_play:
+            sound_player.play()
         self.ui_marker.word.setText(self.ui_marker.word.text() + "Е")
         self.ui_marker.btne.setEnabled(False)
 
     def r(self):
+        if sound_play:
+            sound_player.play()
         self.ui_marker.word.setText(self.ui_marker.word.text() + "Р")
         self.ui_marker.btnr.setEnabled(False)
-
 
     def clear_screen(self):
         self.n = 0
         self.double_right = 0
-        self.ui_marker.count.setText("0/11 СЛОВ")
+        self.ui_marker.count.setText("0/12 СЛОВ")
         self.cnt = 0
         self.ui_marker.cat.setStyleSheet(
             "background-image: url(:/back/resources/sprites/cat-0.png);")
@@ -298,28 +366,34 @@ class Pillow(QtWidgets.QMainWindow):
         self.cnt = 0
         self.n = 0
 
-    def mainmenu(self):
-        widget.setCurrentIndex(widget.currentIndex() - 7)
-        self.clear_screen()
-
-    def cancel(self):
-        self.ui_pillow.word.setText("")
-        self.btn_enable()
-
-    def confirm(self):
-        self.dictionary = open("Dictionary.txt", "r", encoding="utf-8")
+        dictionary = open("Dictionary.txt", "r", encoding="utf-8")
         while True:
-            self.words = self.dictionary.readline()
+            self.words = dictionary.readline()
             self.words = self.words.split()
             if "подушка" in self.words:
                 break
             if not self.words:
                 break
-        self.dictionary.close()
+        dictionary.close()
 
+    def mainmenu(self):
+        if sound_play:
+            sound_player.play()
+        widget.setCurrentIndex(widget.currentIndex() - 7)
+        self.clear_screen()
+
+    def cancel(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_pillow.word.setText("")
+        self.btn_enable()
+
+    def confirm(self):
+        if sound_play:
+            sound_player.play()
         if self.ui_pillow.word.text() in self.words and self.ui_pillow.word.text() != "" and self.ui_pillow.word.text() not in self.guessed:
             self.guessed.append(self.ui_pillow.word.text())
-            if self.cnt > 1:
+            if self.cnt >= 1:
                 self.double_right += 1
             self.n += 1
             self.ui_pillow.count.setText(str(self.n) + "/11 СЛОВ")
@@ -354,24 +428,44 @@ class Pillow(QtWidgets.QMainWindow):
         self.btn_enable()
 
     def p(self):
+        if sound_play:
+            sound_player.play()
         self.ui_pillow.word.setText(self.ui_pillow.word.text() + "П")
         self.ui_pillow.btnp.setEnabled(False)
+
     def o(self):
+        if sound_play:
+            sound_player.play()
         self.ui_pillow.word.setText(self.ui_pillow.word.text() + "О")
         self.ui_pillow.btno.setEnabled(False)
+
     def d(self):
+        if sound_play:
+            sound_player.play()
         self.ui_pillow.word.setText(self.ui_pillow.word.text() + "Д")
         self.ui_pillow.btnd.setEnabled(False)
+
     def y(self):
+        if sound_play:
+            sound_player.play()
         self.ui_pillow.word.setText(self.ui_pillow.word.text() + "У")
         self.ui_pillow.btny.setEnabled(False)
+
     def sh(self):
+        if sound_play:
+            sound_player.play()
         self.ui_pillow.word.setText(self.ui_pillow.word.text() + "Ш")
         self.ui_pillow.btnsh.setEnabled(False)
+
     def k(self):
+        if sound_play:
+            sound_player.play()
         self.ui_pillow.word.setText(self.ui_pillow.word.text() + "К")
         self.ui_pillow.btnk.setEnabled(False)
+
     def a(self):
+        if sound_play:
+            sound_player.play()
         self.ui_pillow.word.setText(self.ui_pillow.word.text() + "А")
         self.ui_pillow.btna.setEnabled(False)
 
@@ -422,28 +516,34 @@ class Mokasin(QtWidgets.QMainWindow):
         self.cnt = 0
         self.n = 0
 
-    def mainmenu(self):
-        widget.setCurrentIndex(widget.currentIndex() - 8)
-        self.clear_screen()
-
-    def cancel(self):
-        self.ui_mokasin.word.setText("")
-        self.btn_enable()
-
-    def confirm(self):
-        self.dictionary = open("Dictionary.txt", "r", encoding="utf-8")
+        dictionary = open("Dictionary.txt", "r", encoding="utf-8")
         while True:
-            self.words = self.dictionary.readline()
+            self.words = dictionary.readline()
             self.words = self.words.split()
             if "мокасин" in self.words:
                 break
             if not self.words:
                 break
-        self.dictionary.close()
+        dictionary.close()
 
+    def mainmenu(self):
+        if sound_play:
+            sound_player.play()
+        widget.setCurrentIndex(widget.currentIndex() - 8)
+        self.clear_screen()
+
+    def cancel(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_mokasin.word.setText("")
+        self.btn_enable()
+
+    def confirm(self):
+        if sound_play:
+            sound_player.play()
         if self.ui_mokasin.word.text() in self.words and self.ui_mokasin.word.text() != "" and self.ui_mokasin.word.text() not in self.guessed:
             self.guessed.append(self.ui_mokasin.word.text())
-            if self.cnt > 1:
+            if self.cnt >= 1:
                 self.double_right += 1
             self.n += 1
             self.ui_mokasin.count.setText(str(self.n) + "/11 СЛОВ")
@@ -480,33 +580,46 @@ class Mokasin(QtWidgets.QMainWindow):
         self.btn_enable()
 
     def m(self):
+        if sound_play:
+            sound_player.play()
         self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "М")
         self.ui_mokasin.btnm.setEnabled(False)
 
     def o(self):
+        if sound_play:
+            sound_player.play()
         self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "О")
         self.ui_mokasin.btno.setEnabled(False)
 
     def k(self):
+        if sound_play:
+            sound_player.play()
         self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "К")
         self.ui_mokasin.btnk.setEnabled(False)
 
     def a(self):
+        if sound_play:
+            sound_player.play()
         self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "А")
         self.ui_mokasin.btna.setEnabled(False)
 
     def s(self):
+        if sound_play:
+            sound_player.play()
         self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "С")
         self.ui_mokasin.btns.setEnabled(False)
 
     def i(self):
+        if sound_play:
+            sound_player.play()
         self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "И")
         self.ui_mokasin.btni.setEnabled(False)
 
     def n(self):
+        if sound_play:
+            sound_player.play()
         self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "Н")
         self.ui_mokasin.btnn.setEnabled(False)
-
 
     def clear_screen(self):
         self.n = 0
@@ -530,7 +643,7 @@ class Mokasin(QtWidgets.QMainWindow):
         self.ui_mokasin.btns.setEnabled(True)
         self.ui_mokasin.btni.setEnabled(True)
         self.ui_mokasin.btnn.setEnabled(True)
-
+    
 
 class Lose(QtWidgets.QMainWindow):
     def __init__(self):
@@ -541,10 +654,16 @@ class Lose(QtWidgets.QMainWindow):
         self.ui_lose.btnmainmenu.clicked.connect(self.mainmenu)
         self.ui_lose.btnreturne.clicked.connect(self.returne)
 
-    def mainmenu(self):
+    @staticmethod
+    def mainmenu():
+        if sound_play:
+            sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() - 4)
 
-    def returne(self):
+    @staticmethod
+    def returne():
+        if sound_play:
+            sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() + number_level - 4)
 
 
@@ -557,10 +676,16 @@ class Win(QtWidgets.QMainWindow):
         self.ui_win.btnmainmenu.clicked.connect(self.mainmenu)
         self.ui_win.btnreturn.clicked.connect(self.returne)
 
-    def mainmenu(self):
+    @staticmethod
+    def mainmenu():
+        if sound_play:
+            sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() - 5)
 
-    def returne(self):
+    @staticmethod
+    def returne():
+        if sound_play:
+            sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() + number_level - 5)
 
 
@@ -571,13 +696,21 @@ def center_widget():
     widget.move(x, y)
 
 
-
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     widget = QtWidgets.QStackedWidget()
 
+    number_level = 0
+    sound_play = True
+
+    sound_player = QMediaPlayer()
+    sound_player.setMedia(QMediaContent(QtCore.QUrl.fromLocalFile("resources\\audio\\click.mp3")))
+
     media_player = QMediaPlayer()
-    media_player.setMedia(QMediaContent(QtCore.QUrl.fromLocalFile("resources\\audio\\Colorful Cat - Rurikon.mp3")))
+    background_music = QMediaPlaylist()
+    background_music.addMedia(QMediaContent(QtCore.QUrl.fromLocalFile("resources\\audio\\Colorful Cat - Rurikon.mp3")))
+    background_music.setPlaybackMode(QMediaPlaylist.Loop)
+    media_player.setPlaylist(background_music)
     media_player.play()
 
     mainmenu_screen = Mainmenu()
@@ -603,5 +736,3 @@ if __name__ == '__main__':
     widget.show()
     center_widget()
     app.exec()
-
-

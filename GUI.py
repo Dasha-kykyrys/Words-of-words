@@ -447,7 +447,6 @@ class Ui_marker(object):
         marker.setObjectName("marker")
         marker.resize(1440, 1024)
         marker.setMinimumSize(QtCore.QSize(1440, 1024))
-        marker.setToolTip("")
         marker.setStyleSheet("QMainWindow{\n"
 "border-image: url(:/back/resources/sprites/level.png);\n"
 "border-position: center;\n"
@@ -538,6 +537,12 @@ class Ui_marker(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablef.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
 "")
         self.btnf.setText("")
         self.btnf.setObjectName("btnf")
@@ -555,6 +560,13 @@ class Ui_marker(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablel.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
 "")
         self.btnl.setText("")
         self.btnl.setObjectName("btnl")
@@ -569,6 +581,12 @@ class Ui_marker(object):
 "\n"
 "QPushButton:hover{\n"
 "background-image: url(:/back/resources/sprites/presso.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disableo.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -589,6 +607,13 @@ class Ui_marker(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablem.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
 "")
         self.btnm.setText("")
         self.btnm.setObjectName("btnm")
@@ -606,6 +631,13 @@ class Ui_marker(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablea.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
 "")
         self.btna.setText("")
         self.btna.setObjectName("btna")
@@ -620,6 +652,12 @@ class Ui_marker(object):
 "\n"
 "QPushButton:hover{\n"
 "background-image: url(:/back/resources/sprites/presss.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disables.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -640,6 +678,12 @@ class Ui_marker(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablet.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
 "")
         self.btnt.setText("")
         self.btnt.setObjectName("btnt")
@@ -657,6 +701,12 @@ class Ui_marker(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablee.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
 "")
         self.btne.setText("")
         self.btne.setObjectName("btne")
@@ -670,6 +720,12 @@ class Ui_marker(object):
 "\n"
 "QPushButton:hover{\n"
 "background-image: url(:/back/resources/sprites/pressr.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disabler.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -785,14 +841,13 @@ class Ui_marker(object):
         QtCore.QMetaObject.connectSlotsByName(marker)
 
     def retranslateUi(self, marker):
-        _translate = QtCore.QCoreApplication.translate
-        marker.setWindowTitle(_translate("marker", "MainWindow"))
-        self.label.setText(_translate("marker", "ОТГАДАНО:"))
-        self.count.setText(_translate("marker", "0/12 СЛОВ"))
-        self.confirm.setToolTip(_translate("marker", "подтверждение"))
-        self.cancel.setToolTip(_translate("marker", "отмена"))
-        self.btnmainmenu.setToolTip(_translate("marker", "меню"))
-
+            _translate = QtCore.QCoreApplication.translate
+            marker.setWindowTitle(_translate("marker", "MainWindow"))
+            self.label.setText(_translate("marker", "ОТГАДАНО:"))
+            self.count.setText(_translate("marker", "0/12 СЛОВ"))
+            self.confirm.setToolTip(_translate("marker", "подтверждение"))
+            self.cancel.setToolTip(_translate("marker", "отмена"))
+            self.btnmainmenu.setToolTip(_translate("marker", "меню"))
 
 class Ui_pillow(object):
     def setupUi(self, pillow):
@@ -859,6 +914,7 @@ class Ui_pillow(object):
         self.cancel = QtWidgets.QPushButton(self.centralwidget)
         self.cancel.setMinimumSize(QtCore.QSize(107, 95))
         self.cancel.setMaximumSize(QtCore.QSize(107, 95))
+        self.cancel.setToolTipDuration(-1)
         self.cancel.setStyleSheet("QPushButton{\n"
 "background-image: url(:/back/resources/sprites/cancel.png);\n"
 "border: none;\n"
@@ -909,6 +965,7 @@ class Ui_pillow(object):
         self.rightWords_2.setObjectName("rightWords_2")
         self.gridLayout_2.addWidget(self.rightWords_2, 1, 1, 2, 1)
         self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setMinimumSize(QtCore.QSize(400, 60))
         self.label.setMaximumSize(QtCore.QSize(16777215, 60))
         font = QtGui.QFont()
         font.setFamily("Amatic SC")
@@ -955,6 +1012,12 @@ class Ui_pillow(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablep.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
 "")
         self.btnp.setText("")
         self.btnp.setObjectName("btnp")
@@ -969,6 +1032,12 @@ class Ui_pillow(object):
 "\n"
 "QPushButton:hover{\n"
 "background-image: url(:/back/resources/sprites/presso.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disableo.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -989,6 +1058,12 @@ class Ui_pillow(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disabled.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
 "")
         self.btnd.setText("")
         self.btnd.setObjectName("btnd")
@@ -1003,6 +1078,12 @@ class Ui_pillow(object):
 "\n"
 "QPushButton:hover{\n"
 "background-image: url(:/back/resources/sprites/pressy.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disabley.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1023,6 +1104,12 @@ class Ui_pillow(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablesh.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
 "")
         self.btnsh.setText("")
         self.btnsh.setObjectName("btnsh")
@@ -1040,6 +1127,12 @@ class Ui_pillow(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablek.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
 "")
         self.btnk.setText("")
         self.btnk.setObjectName("btnk")
@@ -1054,6 +1147,12 @@ class Ui_pillow(object):
 "\n"
 "QPushButton:hover{\n"
 "background-image: url(:/back/resources/sprites/pressa.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablea.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1102,13 +1201,13 @@ class Ui_pillow(object):
         QtCore.QMetaObject.connectSlotsByName(pillow)
 
     def retranslateUi(self, pillow):
-        _translate = QtCore.QCoreApplication.translate
-        pillow.setWindowTitle(_translate("pillow", "MainWindow"))
-        self.label.setText(_translate("pillow", "ОТГАДАНО:"))
-        self.count.setText(_translate("pillow", "0/11 СЛОВ"))
-        self.confirm.setToolTip(_translate("pillow", "подтверждение"))
-        self.cancel.setToolTip(_translate("pillow", "отмена"))
-        self.btnmainmenu.setToolTip(_translate("pillow", "меню"))
+            _translate = QtCore.QCoreApplication.translate
+            pillow.setWindowTitle(_translate("pillow", "MainWindow"))
+            self.label.setText(_translate("pillow", "ОТГАДАНО:"))
+            self.count.setText(_translate("pillow", "0/11 СЛОВ"))
+            self.confirm.setToolTip(_translate("pillow", "подтверждение"))
+            self.cancel.setToolTip(_translate("pillow", "отмена"))
+            self.btnmainmenu.setToolTip(_translate("pillow", "меню"))
 
 class Ui_mokasin(object):
     def setupUi(self, mokasin):
@@ -1273,6 +1372,12 @@ class Ui_mokasin(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablem.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
 "")
         self.btnm.setText("")
         self.btnm.setObjectName("btnm")
@@ -1287,6 +1392,12 @@ class Ui_mokasin(object):
 "\n"
 "QPushButton:hover{\n"
 "background-image: url(:/back/resources/sprites/presso.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disableo.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1307,6 +1418,12 @@ class Ui_mokasin(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablek.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
 "")
         self.btnk.setText("")
         self.btnk.setObjectName("btnk")
@@ -1321,6 +1438,12 @@ class Ui_mokasin(object):
 "\n"
 "QPushButton:hover{\n"
 "background-image: url(:/back/resources/sprites/pressa.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablea.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1341,6 +1464,12 @@ class Ui_mokasin(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disables.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
 "")
         self.btns.setText("")
         self.btns.setObjectName("btns")
@@ -1355,6 +1484,12 @@ class Ui_mokasin(object):
 "\n"
 "QPushButton:hover{\n"
 "background-image: url(:/back/resources/sprites/pressi.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablei.png);\n"
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
@@ -1375,7 +1510,12 @@ class Ui_mokasin(object):
 "border: none;\n"
 "border-radus: 9px;\n"
 "}\n"
-"")
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablen.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}")
         self.btnn.setText("")
         self.btnn.setObjectName("btnn")
         self.horizontalLayout.addWidget(self.btnn)
