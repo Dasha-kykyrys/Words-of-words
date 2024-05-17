@@ -3,7 +3,7 @@ import random
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QDesktopWidget
-from GUI import Ui_mainmenu, Ui_exit, Ui_pillow, Ui_lose, Ui_win, Ui_marker, Ui_mokasin, Ui_settings, Ui_rule
+from GUI import Ui_mainmenu, Ui_exit, Ui_pillow, Ui_lose, Ui_win, Ui_marker, Ui_mokasin, Ui_settings, Ui_rule, Ui_spiral
 
 
 class Mainmenu(QtWidgets.QMainWindow):
@@ -22,7 +22,7 @@ class Mainmenu(QtWidgets.QMainWindow):
         if sound_play:
             sound_player.play()
         global number_level
-        number_level = random.randint(6, 8)
+        number_level = random.randint(6, 9)
         widget.setCurrentIndex(widget.currentIndex() + number_level)
 
     @staticmethod
@@ -643,7 +643,160 @@ class Mokasin(QtWidgets.QMainWindow):
         self.ui_mokasin.btns.setEnabled(True)
         self.ui_mokasin.btni.setEnabled(True)
         self.ui_mokasin.btnn.setEnabled(True)
-    
+
+
+class Spiral(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(Spiral, self).__init__()
+        self.ui_spiral = Ui_spiral()
+        self.ui_spiral.setupUi(self)
+
+        self.ui_spiral.btnmainmenu.clicked.connect(self.mainmenu)
+        self.ui_spiral.cancel.clicked.connect(self.cancel)
+        self.ui_spiral.confirm.clicked.connect(self.confirm)
+
+        self.ui_spiral.btns.clicked.connect(self.s)
+        self.ui_spiral.btnp.clicked.connect(self.p)
+        self.ui_spiral.btni.clicked.connect(self.i)
+        self.ui_spiral.btnr.clicked.connect(self.r)
+        self.ui_spiral.btna.clicked.connect(self.a)
+        self.ui_spiral.btnl.clicked.connect(self.l)
+        self.ui_spiral.btnsoft.clicked.connect(self.soft)
+
+        self.guessed = []
+        self.maxrightWords = 0
+        self.double_right = 0
+        self.cnt = 0
+        self.n = 0
+
+        dictionary = open("Dictionary.txt", "r", encoding="utf-8")
+        while True:
+            self.words = dictionary.readline()
+            self.words = self.words.split()
+            if "спираль" in self.words:
+                break
+            if not self.words:
+                break
+        dictionary.close()
+
+    def mainmenu(self):
+        if sound_play:
+            sound_player.play()
+        widget.setCurrentIndex(widget.currentIndex() - 9)
+        self.clear_screen()
+
+    def cancel(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_spiral.word.setText("")
+        self.btn_enable()
+
+    def confirm(self):
+        if sound_play:
+            sound_player.play()
+        if self.ui_spiral.word.text() in self.words and self.ui_spiral.word.text() != "" and self.ui_spiral.word.text() not in self.guessed:
+            self.guessed.append(self.ui_spiral.word.text())
+            if self.cnt >= 1:
+                self.double_right += 1
+            self.n += 1
+            self.ui_spiral.count.setText(str(self.n) + "/10 СЛОВ")
+
+            if self.n == 10:
+                widget.setCurrentIndex(widget.currentIndex() - 4)
+                self.clear_screen()
+
+            elif self.maxrightWords != 6:
+                self.ui_spiral.rightWords.setText(self.ui_spiral.rightWords.text() + self.ui_spiral.word.text() + "\n")
+                self.maxrightWords += 1
+            else:
+                self.ui_spiral.rightWords_2.setText(
+                    self.ui_spiral.rightWords_2.text() + self.ui_spiral.word.text() + "\n")
+
+            if self.double_right == 2:
+                self.double_right = 0
+                self.cnt -= 1
+                self.ui_spiral.cat.setStyleSheet(
+                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
+
+        elif self.ui_spiral.word.text() not in self.words:
+            if self.cnt < 5:
+                self.double_right = 0
+                self.cnt += 1
+                self.ui_spiral.cat.setStyleSheet(
+                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
+            else:
+                widget.setCurrentIndex(widget.currentIndex() - 5)
+                self.clear_screen()
+
+        self.ui_spiral.word.setText("")
+
+        self.btn_enable()
+
+    def s(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "С")
+        self.ui_spiral.btns.setEnabled(False)
+
+    def p(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "П")
+        self.ui_spiral.btnp.setEnabled(False)
+
+    def i(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "И")
+        self.ui_spiral.btni.setEnabled(False)
+
+    def r(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "Р")
+        self.ui_spiral.btnr.setEnabled(False)
+
+    def a(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "А")
+        self.ui_spiral.btna.setEnabled(False)
+
+    def l(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "Л")
+        self.ui_spiral.btnl.setEnabled(False)
+
+    def soft(self):
+        if sound_play:
+            sound_player.play()
+        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "Ь")
+        self.ui_spiral.btnsoft.setEnabled(False)
+
+    def clear_screen(self):
+        self.n = 0
+        self.double_right = 0
+        self.ui_spiral.count.setText("0/10 СЛОВ")
+        self.cnt = 0
+        self.ui_spiral.cat.setStyleSheet(
+            "background-image: url(:/back/resources/sprites/cat-0.png);")
+        self.guessed = []
+        self.ui_spiral.rightWords.setText("")
+        self.ui_spiral.rightWords_2.setText("")
+        self.maxrightWords = 0
+        self.ui_spiral.word.setText("")
+        self.btn_enable()
+
+    def btn_enable(self):
+        self.ui_spiral.btns.setEnabled(True)
+        self.ui_spiral.btnp.setEnabled(True)
+        self.ui_spiral.btni.setEnabled(True)
+        self.ui_spiral.btnr.setEnabled(True)
+        self.ui_spiral.btna.setEnabled(True)
+        self.ui_spiral.btnl.setEnabled(True)
+        self.ui_spiral.btnsoft.setEnabled(True)
+
 
 class Lose(QtWidgets.QMainWindow):
     def __init__(self):
@@ -722,6 +875,7 @@ if __name__ == '__main__':
     marker_screen = Marker()
     pillow_screen = Pillow()
     mokasin_screen = Mokasin()
+    spiral_screen = Spiral()
 
     widget.addWidget(mainmenu_screen)   # 0
     widget.addWidget(settings_screen)   # 1
@@ -732,6 +886,7 @@ if __name__ == '__main__':
     widget.addWidget(marker_screen)     # 6
     widget.addWidget(pillow_screen)     # 7
     widget.addWidget(mokasin_screen)    # 8
+    widget.addWidget(spiral_screen)     # 9
 
     widget.show()
     center_widget()
