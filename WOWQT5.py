@@ -3,7 +3,7 @@ import random
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QDesktopWidget
-from GUI import Ui_mainmenu, Ui_exit, Ui_pillow, Ui_lose, Ui_win, Ui_marker, Ui_mokasin, Ui_settings, Ui_rule, Ui_spiral
+from GUI import Ui_mainmenu, Ui_exit, Ui_pillow, Ui_lose, Ui_win, Ui_marker, Ui_mokasin, Ui_settings, Ui_rule, Ui_spiral, Ui_operetta
 
 
 class Mainmenu(QtWidgets.QMainWindow):
@@ -22,7 +22,7 @@ class Mainmenu(QtWidgets.QMainWindow):
         if sound_play:
             sound_player.play()
         global number_level
-        number_level = random.randint(6, 9)
+        number_level = random.randint(6, 10)
         widget.setCurrentIndex(widget.currentIndex() + number_level)
 
     @staticmethod
@@ -248,7 +248,7 @@ class Marker(QtWidgets.QMainWindow):
                 self.ui_marker.cat.setStyleSheet(
                     "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
 
-        elif self.ui_marker.word.text() not in self.words:
+        elif self.ui_marker.word.text() not in self.words and self.ui_marker.word.text() != "":
             if self.cnt < 5:
                 self.double_right = 0
                 self.cnt += 1
@@ -414,7 +414,7 @@ class Pillow(QtWidgets.QMainWindow):
                 self.ui_pillow.cat.setStyleSheet(
                     "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
 
-        elif self.ui_pillow.word.text() not in self.words:
+        elif self.ui_pillow.word.text() not in self.words and self.ui_pillow.word.text() != "":
             if self.cnt < 5:
                 self.double_right = 0
                 self.cnt += 1
@@ -565,7 +565,7 @@ class Mokasin(QtWidgets.QMainWindow):
                 self.ui_mokasin.cat.setStyleSheet(
                     "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
 
-        elif self.ui_mokasin.word.text() not in self.words:
+        elif self.ui_mokasin.word.text() not in self.words and self.ui_mokasin.word.text() != "":
             if self.cnt < 5:
                 self.double_right = 0
                 self.cnt += 1
@@ -644,6 +644,11 @@ class Mokasin(QtWidgets.QMainWindow):
         self.ui_mokasin.btni.setEnabled(True)
         self.ui_mokasin.btnn.setEnabled(True)
 
+class Operetta(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(Operetta, self).__init__()
+        self.ui_operetta = Ui_operetta()
+        self.ui_operetta.setupUi(self)
 
 class Spiral(QtWidgets.QMainWindow):
     def __init__(self):
@@ -718,7 +723,7 @@ class Spiral(QtWidgets.QMainWindow):
                 self.ui_spiral.cat.setStyleSheet(
                     "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
 
-        elif self.ui_spiral.word.text() not in self.words:
+        elif self.ui_spiral.word.text() not in self.words and self.ui_spiral.word.text() != "":
             if self.cnt < 5:
                 self.double_right = 0
                 self.cnt += 1
@@ -876,6 +881,7 @@ if __name__ == '__main__':
     pillow_screen = Pillow()
     mokasin_screen = Mokasin()
     spiral_screen = Spiral()
+    operetta_screen = Operetta()
 
     widget.addWidget(mainmenu_screen)   # 0
     widget.addWidget(settings_screen)   # 1
@@ -887,6 +893,7 @@ if __name__ == '__main__':
     widget.addWidget(pillow_screen)     # 7
     widget.addWidget(mokasin_screen)    # 8
     widget.addWidget(spiral_screen)     # 9
+    widget.addWidget(operetta_screen)     #10
 
     widget.show()
     center_widget()

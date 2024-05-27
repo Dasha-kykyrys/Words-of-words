@@ -1928,6 +1928,391 @@ class Ui_spiral(object):
         self.label.setText(_translate("spiral", "ОТГАДАНО:"))
         self.count.setText(_translate("spiral", "0/10 СЛОВ"))
 
+class Ui_operetta(object):
+    def setupUi(self, operetta):
+        operetta.setObjectName("operetta")
+        operetta.resize(1440, 1024)
+        operetta.setMinimumSize(QtCore.QSize(1440, 1024))
+        operetta.setStyleSheet("QMainWindow{\n"
+"border-image: url(:/back/resources/sprites/level.png);\n"
+"border-position: center;\n"
+"}")
+        self.centralwidget = QtWidgets.QWidget(operetta)
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.gridLayout_2 = QtWidgets.QGridLayout()
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setMinimumSize(QtCore.QSize(0, 60))
+        self.label.setMaximumSize(QtCore.QSize(16777215, 60))
+        font = QtGui.QFont()
+        font.setFamily("Amatic SC")
+        font.setPointSize(36)
+        font.setBold(True)
+        font.setUnderline(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label.setObjectName("label")
+        self.gridLayout_2.addWidget(self.label, 0, 0, 1, 2)
+        self.rightWords_2 = QtWidgets.QLabel(self.centralwidget)
+        self.rightWords_2.setMinimumSize(QtCore.QSize(200, 525))
+        self.rightWords_2.setMaximumSize(QtCore.QSize(200, 525))
+        font = QtGui.QFont()
+        font.setFamily("Amatic SC")
+        font.setPointSize(36)
+        font.setBold(True)
+        font.setWeight(75)
+        self.rightWords_2.setFont(font)
+        self.rightWords_2.setStyleSheet("color: rgb(255, 255, 255);")
+        self.rightWords_2.setText("")
+        self.rightWords_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.rightWords_2.setObjectName("rightWords_2")
+        self.gridLayout_2.addWidget(self.rightWords_2, 1, 1, 1, 1)
+        self.rightWords = QtWidgets.QLabel(self.centralwidget)
+        self.rightWords.setMinimumSize(QtCore.QSize(200, 525))
+        self.rightWords.setMaximumSize(QtCore.QSize(200, 525))
+        font = QtGui.QFont()
+        font.setFamily("Amatic SC")
+        font.setPointSize(36)
+        font.setBold(True)
+        font.setWeight(75)
+        self.rightWords.setFont(font)
+        self.rightWords.setStyleSheet("color: rgb(255, 255, 255);")
+        self.rightWords.setText("")
+        self.rightWords.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.rightWords.setObjectName("rightWords")
+        self.gridLayout_2.addWidget(self.rightWords, 1, 0, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem, 0, 2, 2, 1)
+        self.horizontalLayout_3.addLayout(self.gridLayout_2)
+        self.cat = QtWidgets.QLabel(self.centralwidget)
+        self.cat.setMinimumSize(QtCore.QSize(627, 636))
+        self.cat.setMaximumSize(QtCore.QSize(627, 636))
+        self.cat.setStyleSheet("background-image: url(:/back/resources/sprites/cat-0.png);")
+        self.cat.setText("")
+        self.cat.setObjectName("cat")
+        self.horizontalLayout_3.addWidget(self.cat)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.verticalLayout.addItem(spacerItem1)
+        self.horizontalLayout_3.addLayout(self.verticalLayout)
+        self.gridLayout.addLayout(self.horizontalLayout_3, 1, 0, 1, 1)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setContentsMargins(-1, 7, -1, -1)
+        self.horizontalLayout.setSpacing(34)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
+        self.btno = QtWidgets.QPushButton(self.centralwidget)
+        self.btno.setMinimumSize(QtCore.QSize(107, 95))
+        self.btno.setMaximumSize(QtCore.QSize(107, 95))
+        self.btno.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/o.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/presso.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disableo.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"")
+        self.btno.setText("")
+        self.btno.setObjectName("btno")
+        self.horizontalLayout.addWidget(self.btno)
+        self.btnp = QtWidgets.QPushButton(self.centralwidget)
+        self.btnp.setMinimumSize(QtCore.QSize(107, 95))
+        self.btnp.setMaximumSize(QtCore.QSize(107, 95))
+        self.btnp.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/p.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/pressp.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablep.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"")
+        self.btnp.setText("")
+        self.btnp.setObjectName("btnp")
+        self.horizontalLayout.addWidget(self.btnp)
+        self.btne_1 = QtWidgets.QPushButton(self.centralwidget)
+        self.btne_1.setMinimumSize(QtCore.QSize(107, 95))
+        self.btne_1.setMaximumSize(QtCore.QSize(107, 95))
+        self.btne_1.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/e.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/presse.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablee.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btne_1.setText("")
+        self.btne_1.setObjectName("btne_1")
+        self.horizontalLayout.addWidget(self.btne_1)
+        self.btnr = QtWidgets.QPushButton(self.centralwidget)
+        self.btnr.setMinimumSize(QtCore.QSize(107, 95))
+        self.btnr.setMaximumSize(QtCore.QSize(107, 95))
+        self.btnr.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/r.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/pressr.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disabler.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"")
+        self.btnr.setText("")
+        self.btnr.setObjectName("btnr")
+        self.horizontalLayout.addWidget(self.btnr)
+        self.btne_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.btne_2.setMinimumSize(QtCore.QSize(107, 95))
+        self.btne_2.setMaximumSize(QtCore.QSize(107, 95))
+        self.btne_2.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/e.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/presse.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablee.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"")
+        self.btne_2.setText("")
+        self.btne_2.setObjectName("btne_2")
+        self.horizontalLayout.addWidget(self.btne_2)
+        self.btnt_1 = QtWidgets.QPushButton(self.centralwidget)
+        self.btnt_1.setMinimumSize(QtCore.QSize(107, 95))
+        self.btnt_1.setMaximumSize(QtCore.QSize(107, 95))
+        self.btnt_1.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/t.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/presst.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablet.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btnt_1.setText("")
+        self.btnt_1.setObjectName("btnt_1")
+        self.horizontalLayout.addWidget(self.btnt_1)
+        self.btnt_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.btnt_2.setMinimumSize(QtCore.QSize(107, 95))
+        self.btnt_2.setMaximumSize(QtCore.QSize(107, 95))
+        self.btnt_2.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/t.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/presst.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablet.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btnt_2.setText("")
+        self.btnt_2.setObjectName("btnt_2")
+        self.horizontalLayout.addWidget(self.btnt_2)
+        self.btna = QtWidgets.QPushButton(self.centralwidget)
+        self.btna.setMinimumSize(QtCore.QSize(107, 95))
+        self.btna.setMaximumSize(QtCore.QSize(107, 95))
+        self.btna.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/a.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/pressa.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"background-image: url(:/back/resources/sprites/disablea.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btna.setText("")
+        self.btna.setObjectName("btna")
+        self.horizontalLayout.addWidget(self.btna)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem3)
+        self.gridLayout.addLayout(self.horizontalLayout, 5, 0, 1, 1)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.btnmainmenu = QtWidgets.QPushButton(self.centralwidget)
+        self.btnmainmenu.setMinimumSize(QtCore.QSize(107, 95))
+        self.btnmainmenu.setMaximumSize(QtCore.QSize(107, 95))
+        self.btnmainmenu.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/btmainmenu.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/pressbtmainmenu.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.btnmainmenu.setText("")
+        self.btnmainmenu.setObjectName("btnmainmenu")
+        self.horizontalLayout_4.addWidget(self.btnmainmenu)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem4)
+        self.count = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Amatic SC")
+        font.setPointSize(40)
+        font.setBold(True)
+        font.setWeight(75)
+        self.count.setFont(font)
+        self.count.setStyleSheet("color: rgb(255, 255, 255);")
+        self.count.setObjectName("count")
+        self.horizontalLayout_4.addWidget(self.count)
+        self.gridLayout.addLayout(self.horizontalLayout_4, 0, 0, 1, 1)
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
+        self.horizontalLayout_6.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_6.setSpacing(0)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem5)
+        self.word = QtWidgets.QLabel(self.centralwidget)
+        self.word.setMinimumSize(QtCore.QSize(360, 95))
+        self.word.setMaximumSize(QtCore.QSize(360, 95))
+        font = QtGui.QFont()
+        font.setFamily("Amatic SC")
+        font.setPointSize(48)
+        font.setBold(True)
+        font.setWeight(75)
+        self.word.setFont(font)
+        self.word.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.word.setStyleSheet("color: rgb(255, 255, 255);")
+        self.word.setAlignment(QtCore.Qt.AlignCenter)
+        self.word.setObjectName("word")
+        self.horizontalLayout_6.addWidget(self.word)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setContentsMargins(27, 0, 27, 0)
+        self.horizontalLayout_2.setSpacing(34)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem6)
+        self.confirm = QtWidgets.QPushButton(self.centralwidget)
+        self.confirm.setMinimumSize(QtCore.QSize(107, 95))
+        self.confirm.setMaximumSize(QtCore.QSize(107, 95))
+        self.confirm.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/confirm.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/pressconfirm.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.confirm.setText("")
+        self.confirm.setObjectName("confirm")
+        self.horizontalLayout_2.addWidget(self.confirm)
+        self.cancel = QtWidgets.QPushButton(self.centralwidget)
+        self.cancel.setMinimumSize(QtCore.QSize(107, 95))
+        self.cancel.setMaximumSize(QtCore.QSize(107, 95))
+        self.cancel.setStyleSheet("QPushButton{\n"
+"background-image: url(:/back/resources/sprites/cancel.png);\n"
+"border: none;\n"
+"border-radus: 9px;}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-image: url(:/back/resources/sprites/presscancel.png);\n"
+"border: none;\n"
+"border-radus: 9px;\n"
+"}\n"
+"")
+        self.cancel.setText("")
+        self.cancel.setObjectName("cancel")
+        self.horizontalLayout_2.addWidget(self.cancel)
+        self.horizontalLayout_6.addLayout(self.horizontalLayout_2)
+        self.gridLayout.addLayout(self.horizontalLayout_6, 3, 0, 1, 1)
+        spacerItem7 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem7, 6, 0, 1, 1)
+        spacerItem8 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem8, 2, 0, 1, 1)
+        operetta.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(operetta)
+        QtCore.QMetaObject.connectSlotsByName(operetta)
+
+    def retranslateUi(self, operetta):
+        _translate = QtCore.QCoreApplication.translate
+        operetta.setWindowTitle(_translate("operetta", "MainWindow"))
+        self.label.setText(_translate("operetta", "ОТГАДАНО:"))
+        self.count.setText(_translate("operetta", "0/10 СЛОВ"))
+        self.confirm.setToolTip(_translate("operetta", "подтверждение"))
+        self.cancel.setToolTip(_translate("operetta", "отмена"))
+        self.btnmainmenu.setToolTip(_translate("operetta", "меню"))
+
 class Ui_lose(object):
     def setupUi(self, lose):
         lose.setObjectName("lose")
