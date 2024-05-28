@@ -3,7 +3,7 @@ import random
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QDesktopWidget
-from GUI import Ui_mainmenu, Ui_exit, Ui_pillow, Ui_lose, Ui_win, Ui_marker, Ui_mokasin, Ui_settings, Ui_rule, Ui_spiral, Ui_operetta
+from GUI import Ui_mainmenu, Ui_exit, Ui_lose, Ui_win, Ui_settings, Ui_rule, Ui_level, MyStyledButton
 
 
 class Mainmenu(QtWidgets.QMainWindow):
@@ -22,8 +22,8 @@ class Mainmenu(QtWidgets.QMainWindow):
         if sound_play:
             sound_player.play()
         global number_level
-        number_level = random.randint(6, 10)
-        widget.setCurrentIndex(widget.currentIndex() + number_level)
+        number_level = random.randint(1, 5)
+        widget.setCurrentIndex(widget.currentIndex() + 6)
 
     @staticmethod
     def settings():
@@ -173,41 +173,198 @@ class Exit(QtWidgets.QMainWindow):
         widget.setCurrentIndex(widget.currentIndex() - 3)
 
 
-class Marker(QtWidgets.QMainWindow):
+class Level(QtWidgets.QMainWindow):
     def __init__(self):
-        super(Marker, self).__init__()
-        self.ui_marker = Ui_marker()
-        self.ui_marker.setupUi(self)
-
-        self.ui_marker.btnmainmenu.clicked.connect(self.mainmenu)
-        self.ui_marker.cancel.clicked.connect(self.cancel)
-        self.ui_marker.confirm.clicked.connect(self.confirm)
-
-        self.ui_marker.btnf.clicked.connect(self.f)
-        self.ui_marker.btnl.clicked.connect(self.l)
-        self.ui_marker.btno.clicked.connect(self.o)
-        self.ui_marker.btnm.clicked.connect(self.m)
-        self.ui_marker.btna.clicked.connect(self.a)
-        self.ui_marker.btns.clicked.connect(self.s)
-        self.ui_marker.btnt.clicked.connect(self.t)
-        self.ui_marker.btne.clicked.connect(self.e)
-        self.ui_marker.btnr.clicked.connect(self.r)
+        super(Level, self).__init__()
+        self.ui_level = Ui_level()
+        self.ui_level.setupUi(self)
 
         self.guessed = []
-        self.maxrightWords = 0
         self.double_right = 0
-        self.cnt = 0
-        self.n = 0
+        self.mistake = 0
+        self.count_guessed = 0
+        self.max_in_column = 0
+        self.spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
 
-        dictionary = open("Dictionary.txt", "r", encoding="utf-8")
-        while True:
-            self.words = dictionary.readline()
-            self.words = self.words.split()
-            if "фломастер" in self.words:
-                break
-            if not self.words:
-                break
-        dictionary.close()
+        self.ui_level.btnmainmenu.clicked.connect(self.mainmenu)
+        self.ui_level.cancel.clicked.connect(self.cancel)
+        self.ui_level.confirm.clicked.connect(self.confirm)
+
+    def generate(self):
+        match number_level:
+            case 1: self.marker()
+            case 2: self.pillow()
+            case 3: self.mokasin()
+            case 4: self.spiral()
+            case 5: self.operetta()
+
+    def marker(self):
+        self.filling_dictionary("фломастер")
+        self.maxrightWords = 12
+
+        self.ui_level.count.setText("0/12 СЛОВ")
+        button_f = MyStyledButton("f", "Ф")
+        button_l = MyStyledButton("l", "Л")
+        button_o = MyStyledButton("o", "О")
+        button_m = MyStyledButton("m", "М")
+        button_a = MyStyledButton("a", "А")
+        button_s = MyStyledButton("s", "С")
+        button_t = MyStyledButton("t", "Т")
+        button_e = MyStyledButton("e", "Е")
+        button_r = MyStyledButton("r", "Р")
+
+        self.ui_level.box_btnletter.addItem(self.spacerItem1)
+        self.ui_level.box_btnletter.addWidget(button_f)
+        self.ui_level.box_btnletter.addWidget(button_l)
+        self.ui_level.box_btnletter.addWidget(button_o)
+        self.ui_level.box_btnletter.addWidget(button_m)
+        self.ui_level.box_btnletter.addWidget(button_a)
+        self.ui_level.box_btnletter.addWidget(button_s)
+        self.ui_level.box_btnletter.addWidget(button_t)
+        self.ui_level.box_btnletter.addWidget(button_e)
+        self.ui_level.box_btnletter.addWidget(button_r)
+        self.ui_level.box_btnletter.addItem(self.spacerItem2)
+
+        button_f.clicked.connect(self.letter_in_layout)
+        button_l.clicked.connect(self.letter_in_layout)
+        button_o.clicked.connect(self.letter_in_layout)
+        button_m.clicked.connect(self.letter_in_layout)
+        button_a.clicked.connect(self.letter_in_layout)
+        button_s.clicked.connect(self.letter_in_layout)
+        button_t.clicked.connect(self.letter_in_layout)
+        button_e.clicked.connect(self.letter_in_layout)
+        button_r.clicked.connect(self.letter_in_layout)
+
+    def pillow(self):
+        self.filling_dictionary("подушка")
+        self.maxrightWords = 11
+
+        self.ui_level.count.setText("0/11 СЛОВ")
+        button_p = MyStyledButton("p", "П")
+        button_o = MyStyledButton("o", "О")
+        button_d = MyStyledButton("d", "Д")
+        button_y = MyStyledButton("y", "У")
+        button_sh = MyStyledButton("sh", "Ш")
+        button_k = MyStyledButton("k", "К")
+        button_a = MyStyledButton("a", "А")
+
+        self.ui_level.box_btnletter.addItem(self.spacerItem1)
+        self.ui_level.box_btnletter.addWidget(button_p)
+        self.ui_level.box_btnletter.addWidget(button_o)
+        self.ui_level.box_btnletter.addWidget(button_d)
+        self.ui_level.box_btnletter.addWidget(button_y)
+        self.ui_level.box_btnletter.addWidget(button_sh)
+        self.ui_level.box_btnletter.addWidget(button_k)
+        self.ui_level.box_btnletter.addWidget(button_a)
+        self.ui_level.box_btnletter.addItem(self.spacerItem2)
+
+        button_p.clicked.connect(self.letter_in_layout)
+        button_o.clicked.connect(self.letter_in_layout)
+        button_d.clicked.connect(self.letter_in_layout)
+        button_y.clicked.connect(self.letter_in_layout)
+        button_sh.clicked.connect(self.letter_in_layout)
+        button_k.clicked.connect(self.letter_in_layout)
+        button_a.clicked.connect(self.letter_in_layout)
+
+    def mokasin(self):
+        self.filling_dictionary("мокасин")
+        self.maxrightWords = 11
+
+        self.ui_level.count.setText("0/11 СЛОВ")
+        button_m = MyStyledButton("m", "М")
+        button_o = MyStyledButton("o", "О")
+        button_k = MyStyledButton("k", "К")
+        button_a = MyStyledButton("a", "А")
+        button_s = MyStyledButton("s", "С")
+        button_i = MyStyledButton("i", "И")
+        button_n = MyStyledButton("n", "Н")
+
+        self.ui_level.box_btnletter.addItem(self.spacerItem1)
+        self.ui_level.box_btnletter.addWidget(button_m)
+        self.ui_level.box_btnletter.addWidget(button_o)
+        self.ui_level.box_btnletter.addWidget(button_k)
+        self.ui_level.box_btnletter.addWidget(button_a)
+        self.ui_level.box_btnletter.addWidget(button_s)
+        self.ui_level.box_btnletter.addWidget(button_i)
+        self.ui_level.box_btnletter.addWidget(button_n)
+
+        self.ui_level.box_btnletter.addItem(self.spacerItem2)
+
+        button_m.clicked.connect(self.letter_in_layout)
+        button_o.clicked.connect(self.letter_in_layout)
+        button_k.clicked.connect(self.letter_in_layout)
+        button_a.clicked.connect(self.letter_in_layout)
+        button_s.clicked.connect(self.letter_in_layout)
+        button_i.clicked.connect(self.letter_in_layout)
+        button_n.clicked.connect(self.letter_in_layout)
+
+    def spiral(self):
+        self.filling_dictionary("спираль")
+        self.maxrightWords = 10
+
+        self.ui_level.count.setText("0/10 СЛОВ")
+        button_s = MyStyledButton("s", "С")
+        button_p = MyStyledButton("p", "П")
+        button_i = MyStyledButton("i", "И")
+        button_r = MyStyledButton("r", "Р")
+        button_a = MyStyledButton("a", "А")
+        button_l = MyStyledButton("l", "Л")
+        button_soft = MyStyledButton("soft", "Ь")
+
+        self.ui_level.box_btnletter.addItem(self.spacerItem1)
+        self.ui_level.box_btnletter.addWidget(button_s)
+        self.ui_level.box_btnletter.addWidget(button_p)
+        self.ui_level.box_btnletter.addWidget(button_i)
+        self.ui_level.box_btnletter.addWidget(button_r)
+        self.ui_level.box_btnletter.addWidget(button_a)
+        self.ui_level.box_btnletter.addWidget(button_l)
+        self.ui_level.box_btnletter.addWidget(button_soft)
+
+        self.ui_level.box_btnletter.addItem(self.spacerItem2)
+
+        button_s.clicked.connect(self.letter_in_layout)
+        button_p.clicked.connect(self.letter_in_layout)
+        button_i.clicked.connect(self.letter_in_layout)
+        button_r.clicked.connect(self.letter_in_layout)
+        button_a.clicked.connect(self.letter_in_layout)
+        button_l.clicked.connect(self.letter_in_layout)
+        button_soft.clicked.connect(self.letter_in_layout)
+
+    def operetta(self):
+        self.filling_dictionary("оперетта")
+        self.maxrightWords = 10
+
+        self.ui_level.count.setText("0/10 СЛОВ")
+        button_o = MyStyledButton("o", "О")
+        button_p = MyStyledButton("p", "П")
+        button_e_1 = MyStyledButton("e", "Е")
+        button_r = MyStyledButton("r", "Р")
+        button_e_2 = MyStyledButton("e", "Е")
+        button_t_1 = MyStyledButton("t", "Т")
+        button_t_2 = MyStyledButton("t", "Т")
+        button_a = MyStyledButton("a", "А")
+
+        self.ui_level.box_btnletter.addItem(self.spacerItem1)
+        self.ui_level.box_btnletter.addWidget(button_o)
+        self.ui_level.box_btnletter.addWidget(button_p)
+        self.ui_level.box_btnletter.addWidget(button_e_1)
+        self.ui_level.box_btnletter.addWidget(button_r)
+        self.ui_level.box_btnletter.addWidget(button_e_2)
+        self.ui_level.box_btnletter.addWidget(button_t_1)
+        self.ui_level.box_btnletter.addWidget(button_t_2)
+        self.ui_level.box_btnletter.addWidget(button_a)
+
+        self.ui_level.box_btnletter.addItem(self.spacerItem2)
+
+        button_o.clicked.connect(self.letter_in_layout)
+        button_p.clicked.connect(self.letter_in_layout)
+        button_e_1.clicked.connect(self.letter_in_layout)
+        button_r.clicked.connect(self.letter_in_layout)
+        button_e_2.clicked.connect(self.letter_in_layout)
+        button_t_1.clicked.connect(self.letter_in_layout)
+        button_t_2.clicked.connect(self.letter_in_layout)
+        button_a.clicked.connect(self.letter_in_layout)
 
     def mainmenu(self):
         if sound_play:
@@ -218,589 +375,97 @@ class Marker(QtWidgets.QMainWindow):
     def cancel(self):
         if sound_play:
             sound_player.play()
-        self.ui_marker.word.setText("")
-        self.btn_enable()
+        self.ui_level.word.setText("")
+        self.set_buttons_enabled()
 
     def confirm(self):
         if sound_play:
             sound_player.play()
-        if self.ui_marker.word.text() in self.words and self.ui_marker.word.text() != "" and self.ui_marker.word.text() not in self.guessed:
-            self.guessed.append(self.ui_marker.word.text())
-            self.n += 1
-            if self.cnt >= 1:
-                self.double_right += 1
-            self.ui_marker.count.setText(str(self.n) + "/12 СЛОВ")
 
-            if self.n == 12:
+        enter_word = self.ui_level.word.text()
+
+        if enter_word in self.words_dictionary and enter_word != "" and enter_word not in self.guessed:
+            self.guessed.append(enter_word)
+            if self.mistake >= 1:
+                self.double_right += 1
+            self.count_guessed += 1
+            self.ui_level.count.setText(str(self.count_guessed) + "/" + str(self.maxrightWords) + " СЛОВ")
+
+            if self.count_guessed == self.maxrightWords:
                 widget.setCurrentIndex(widget.currentIndex() - 1)
                 self.clear_screen()
 
-            elif self.maxrightWords != 6:
-                self.ui_marker.rightWords.setText(self.ui_marker.rightWords.text() + self.ui_marker.word.text() + "\n")
-                self.maxrightWords += 1
+            elif self.max_in_column != 6:
+                self.ui_level.rightWords.setText(self.ui_level.rightWords.text() + enter_word + "\n")
+                self.max_in_column += 1
             else:
-                self.ui_marker.rightWords_2.setText(
-                    self.ui_marker.rightWords_2.text() + self.ui_marker.word.text() + "\n")
+                self.ui_level.rightWords_2.setText(
+                    self.ui_level.rightWords_2.text() + enter_word + "\n")
 
             if self.double_right == 2:
                 self.double_right = 0
-                self.cnt -= 1
-                self.ui_marker.cat.setStyleSheet(
-                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
+                self.mistake -= 1
+                self.ui_level.cat.setStyleSheet(
+                    "background-image: url(:/back/resources/sprites/cat-" + str(self.mistake) + ".png);")
 
-        elif self.ui_marker.word.text() not in self.words and self.ui_marker.word.text() != "":
-            if self.cnt < 5:
+        elif self.ui_level.word.text() not in self.words_dictionary and self.ui_level.word.text() != "":
+            if self.mistake < 5:
                 self.double_right = 0
-                self.cnt += 1
-                self.ui_marker.cat.setStyleSheet(
-                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
+                self.mistake += 1
+                self.ui_level.cat.setStyleSheet(
+                    "background-image: url(:/back/resources/sprites/cat-" + str(self.mistake) + ".png);")
             else:
                 widget.setCurrentIndex(widget.currentIndex() - 2)
                 self.clear_screen()
 
-        self.ui_marker.word.setText("")
+        self.ui_level.word.setText("")
+        self.set_buttons_enabled()
 
-        self.btn_enable()
-
-    def f(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_marker.word.setText(self.ui_marker.word.text() + "Ф")
-        self.ui_marker.btnf.setEnabled(False)
-
-    def l(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_marker.word.setText(self.ui_marker.word.text() + "Л")
-        self.ui_marker.btnl.setEnabled(False)
-
-    def o(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_marker.word.setText(self.ui_marker.word.text() + "О")
-        self.ui_marker.btno.setEnabled(False)
-
-    def m(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_marker.word.setText(self.ui_marker.word.text() + "М")
-        self.ui_marker.btnm.setEnabled(False)
-
-    def a(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_marker.word.setText(self.ui_marker.word.text() + "А")
-        self.ui_marker.btna.setEnabled(False)
-
-    def s(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_marker.word.setText(self.ui_marker.word.text() + "С")
-        self.ui_marker.btns.setEnabled(False)
-
-    def t(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_marker.word.setText(self.ui_marker.word.text() + "Т")
-        self.ui_marker.btnt.setEnabled(False)
-
-    def e(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_marker.word.setText(self.ui_marker.word.text() + "Е")
-        self.ui_marker.btne.setEnabled(False)
-
-    def r(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_marker.word.setText(self.ui_marker.word.text() + "Р")
-        self.ui_marker.btnr.setEnabled(False)
-
-    def clear_screen(self):
-        self.n = 0
-        self.double_right = 0
-        self.ui_marker.count.setText("0/12 СЛОВ")
-        self.cnt = 0
-        self.ui_marker.cat.setStyleSheet(
-            "background-image: url(:/back/resources/sprites/cat-0.png);")
-        self.guessed = []
-        self.ui_marker.rightWords.setText("")
-        self.ui_marker.rightWords_2.setText("")
-        self.maxrightWords = 0
-        self.ui_marker.word.setText("")
-        self.btn_enable()
-
-    def btn_enable(self):
-        self.ui_marker.btnf.setEnabled(True)
-        self.ui_marker.btnl.setEnabled(True)
-        self.ui_marker.btno.setEnabled(True)
-        self.ui_marker.btnm.setEnabled(True)
-        self.ui_marker.btna.setEnabled(True)
-        self.ui_marker.btns.setEnabled(True)
-        self.ui_marker.btnt.setEnabled(True)
-        self.ui_marker.btne.setEnabled(True)
-        self.ui_marker.btnr.setEnabled(True)
-
-
-class Pillow(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(Pillow, self).__init__()
-        self.ui_pillow = Ui_pillow()
-        self.ui_pillow.setupUi(self)
-
-        self.ui_pillow.btnmainmenu.clicked.connect(self.mainmenu)
-        self.ui_pillow.cancel.clicked.connect(self.cancel)
-        self.ui_pillow.confirm.clicked.connect(self.confirm)
-
-        self.ui_pillow.btnp.clicked.connect(self.p)
-        self.ui_pillow.btno.clicked.connect(self.o)
-        self.ui_pillow.btnd.clicked.connect(self.d)
-        self.ui_pillow.btny.clicked.connect(self.y)
-        self.ui_pillow.btnsh.clicked.connect(self.sh)
-        self.ui_pillow.btnk.clicked.connect(self.k)
-        self.ui_pillow.btna.clicked.connect(self.a)
-
-        self.guessed = []
-        self.maxrightWords = 0
-        self.double_right = 0
-        self.cnt = 0
-        self.n = 0
-
+    def filling_dictionary(self, word):
         dictionary = open("Dictionary.txt", "r", encoding="utf-8")
         while True:
-            self.words = dictionary.readline()
-            self.words = self.words.split()
-            if "подушка" in self.words:
+            self.words_dictionary = dictionary.readline()
+            self.words_dictionary = self.words_dictionary.split()
+            if word in self.words_dictionary:
                 break
-            if not self.words:
+            if not self.words_dictionary:
+                self.words_dictionary = []
                 break
         dictionary.close()
 
-    def mainmenu(self):
+    def letter_in_layout(self):
         if sound_play:
             sound_player.play()
-        widget.setCurrentIndex(widget.currentIndex() - 7)
-        self.clear_screen()
+        sender = self.sender()
+        sender.setEnabled(False)
 
-    def cancel(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_pillow.word.setText("")
-        self.btn_enable()
+        self.ui_level.word.setText(self.ui_level.word.text() + sender.letter)
 
-    def confirm(self):
-        if sound_play:
-            sound_player.play()
-        if self.ui_pillow.word.text() in self.words and self.ui_pillow.word.text() != "" and self.ui_pillow.word.text() not in self.guessed:
-            self.guessed.append(self.ui_pillow.word.text())
-            if self.cnt >= 1:
-                self.double_right += 1
-            self.n += 1
-            self.ui_pillow.count.setText(str(self.n) + "/11 СЛОВ")
+    def set_buttons_enabled(self):
+        for i in range(self.ui_level.box_btnletter.count()):
+            child = self.ui_level.box_btnletter.itemAt(i)
+            if child.widget():
+                child.widget().setEnabled(True)
 
-            if self.n == 11:
-                widget.setCurrentIndex(widget.currentIndex() - 2)
-                self.clear_screen()
-
-            elif self.maxrightWords != 6:
-                self.ui_pillow.rightWords.setText(self.ui_pillow.rightWords.text() + self.ui_pillow.word.text() + "\n")
-                self.maxrightWords += 1
-            else:
-                self.ui_pillow.rightWords_2.setText(self.ui_pillow.rightWords_2.text() + self.ui_pillow.word.text() + "\n")
-
-            if self.double_right == 2:
-                self.double_right = 0
-                self.cnt -= 1
-                self.ui_pillow.cat.setStyleSheet(
-                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
-
-        elif self.ui_pillow.word.text() not in self.words and self.ui_pillow.word.text() != "":
-            if self.cnt < 5:
-                self.double_right = 0
-                self.cnt += 1
-                self.ui_pillow.cat.setStyleSheet("background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
-            else:
-                widget.setCurrentIndex(widget.currentIndex() - 3)
-                self.clear_screen()
-
-        self.ui_pillow.word.setText("")
-
-        self.btn_enable()
-
-    def p(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_pillow.word.setText(self.ui_pillow.word.text() + "П")
-        self.ui_pillow.btnp.setEnabled(False)
-
-    def o(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_pillow.word.setText(self.ui_pillow.word.text() + "О")
-        self.ui_pillow.btno.setEnabled(False)
-
-    def d(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_pillow.word.setText(self.ui_pillow.word.text() + "Д")
-        self.ui_pillow.btnd.setEnabled(False)
-
-    def y(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_pillow.word.setText(self.ui_pillow.word.text() + "У")
-        self.ui_pillow.btny.setEnabled(False)
-
-    def sh(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_pillow.word.setText(self.ui_pillow.word.text() + "Ш")
-        self.ui_pillow.btnsh.setEnabled(False)
-
-    def k(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_pillow.word.setText(self.ui_pillow.word.text() + "К")
-        self.ui_pillow.btnk.setEnabled(False)
-
-    def a(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_pillow.word.setText(self.ui_pillow.word.text() + "А")
-        self.ui_pillow.btna.setEnabled(False)
+    def clear_layout(self):
+        while self.ui_level.box_btnletter.count():
+            child = self.ui_level.box_btnletter.takeAt(0)
+            if child.widget():
+                child.widget().deleteLater()
 
     def clear_screen(self):
-        self.n = 0
-        self.double_right = 0
-        self.ui_pillow.count.setText("0/11 СЛОВ")
-        self.cnt = 0
-        self.ui_pillow.cat.setStyleSheet("background-image: url(:/back/resources/sprites/cat-0.png);")
+        self.clear_layout()
+        self.words_dictionary = []
         self.guessed = []
-        self.ui_pillow.rightWords.setText("")
-        self.ui_pillow.rightWords_2.setText("")
-        self.maxrightWords = 0
-        self.ui_pillow.word.setText("")
-        self.btn_enable()
-
-    def btn_enable(self):
-        self.ui_pillow.btnp.setEnabled(True)
-        self.ui_pillow.btno.setEnabled(True)
-        self.ui_pillow.btnd.setEnabled(True)
-        self.ui_pillow.btny.setEnabled(True)
-        self.ui_pillow.btnsh.setEnabled(True)
-        self.ui_pillow.btnk.setEnabled(True)
-        self.ui_pillow.btna.setEnabled(True)
-
-
-class Mokasin(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(Mokasin, self).__init__()
-        self.ui_mokasin = Ui_mokasin()
-        self.ui_mokasin.setupUi(self)
-
-        self.ui_mokasin.btnmainmenu.clicked.connect(self.mainmenu)
-        self.ui_mokasin.cancel.clicked.connect(self.cancel)
-        self.ui_mokasin.confirm.clicked.connect(self.confirm)
-
-        self.ui_mokasin.btnm.clicked.connect(self.m)
-        self.ui_mokasin.btno.clicked.connect(self.o)
-        self.ui_mokasin.btnk.clicked.connect(self.k)
-        self.ui_mokasin.btna.clicked.connect(self.a)
-        self.ui_mokasin.btns.clicked.connect(self.s)
-        self.ui_mokasin.btni.clicked.connect(self.i)
-        self.ui_mokasin.btnn.clicked.connect(self.n)
-
-        self.guessed = []
-        self.maxrightWords = 0
+        self.count_guessed = 0
         self.double_right = 0
-        self.cnt = 0
-        self.n = 0
-
-        dictionary = open("Dictionary.txt", "r", encoding="utf-8")
-        while True:
-            self.words = dictionary.readline()
-            self.words = self.words.split()
-            if "мокасин" in self.words:
-                break
-            if not self.words:
-                break
-        dictionary.close()
-
-    def mainmenu(self):
-        if sound_play:
-            sound_player.play()
-        widget.setCurrentIndex(widget.currentIndex() - 8)
-        self.clear_screen()
-
-    def cancel(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_mokasin.word.setText("")
-        self.btn_enable()
-
-    def confirm(self):
-        if sound_play:
-            sound_player.play()
-        if self.ui_mokasin.word.text() in self.words and self.ui_mokasin.word.text() != "" and self.ui_mokasin.word.text() not in self.guessed:
-            self.guessed.append(self.ui_mokasin.word.text())
-            if self.cnt >= 1:
-                self.double_right += 1
-            self.n += 1
-            self.ui_mokasin.count.setText(str(self.n) + "/11 СЛОВ")
-
-            if self.n == 11:
-                widget.setCurrentIndex(widget.currentIndex() - 3)
-                self.clear_screen()
-
-            elif self.maxrightWords != 6:
-                self.ui_mokasin.rightWords.setText(self.ui_mokasin.rightWords.text() + self.ui_mokasin.word.text() + "\n")
-                self.maxrightWords += 1
-            else:
-                self.ui_mokasin.rightWords_2.setText(
-                    self.ui_mokasin.rightWords_2.text() + self.ui_mokasin.word.text() + "\n")
-
-            if self.double_right == 2:
-                self.double_right = 0
-                self.cnt -= 1
-                self.ui_mokasin.cat.setStyleSheet(
-                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
-
-        elif self.ui_mokasin.word.text() not in self.words and self.ui_mokasin.word.text() != "":
-            if self.cnt < 5:
-                self.double_right = 0
-                self.cnt += 1
-                self.ui_mokasin.cat.setStyleSheet(
-                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
-            else:
-                widget.setCurrentIndex(widget.currentIndex() - 4)
-                self.clear_screen()
-
-        self.ui_mokasin.word.setText("")
-
-        self.btn_enable()
-
-    def m(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "М")
-        self.ui_mokasin.btnm.setEnabled(False)
-
-    def o(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "О")
-        self.ui_mokasin.btno.setEnabled(False)
-
-    def k(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "К")
-        self.ui_mokasin.btnk.setEnabled(False)
-
-    def a(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "А")
-        self.ui_mokasin.btna.setEnabled(False)
-
-    def s(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "С")
-        self.ui_mokasin.btns.setEnabled(False)
-
-    def i(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "И")
-        self.ui_mokasin.btni.setEnabled(False)
-
-    def n(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_mokasin.word.setText(self.ui_mokasin.word.text() + "Н")
-        self.ui_mokasin.btnn.setEnabled(False)
-
-    def clear_screen(self):
-        self.n = 0
-        self.double_right = 0
-        self.ui_mokasin.count.setText("0/11 СЛОВ")
-        self.cnt = 0
-        self.ui_mokasin.cat.setStyleSheet(
+        self.mistake = 0
+        self.max_in_column = 0
+        self.ui_level.cat.setStyleSheet(
             "background-image: url(:/back/resources/sprites/cat-0.png);")
-        self.guessed = []
-        self.ui_mokasin.rightWords.setText("")
-        self.ui_mokasin.rightWords_2.setText("")
-        self.maxrightWords = 0
-        self.ui_mokasin.word.setText("")
-        self.btn_enable()
-
-    def btn_enable(self):
-        self.ui_mokasin.btnm.setEnabled(True)
-        self.ui_mokasin.btno.setEnabled(True)
-        self.ui_mokasin.btnk.setEnabled(True)
-        self.ui_mokasin.btna.setEnabled(True)
-        self.ui_mokasin.btns.setEnabled(True)
-        self.ui_mokasin.btni.setEnabled(True)
-        self.ui_mokasin.btnn.setEnabled(True)
-
-class Operetta(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(Operetta, self).__init__()
-        self.ui_operetta = Ui_operetta()
-        self.ui_operetta.setupUi(self)
-
-class Spiral(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(Spiral, self).__init__()
-        self.ui_spiral = Ui_spiral()
-        self.ui_spiral.setupUi(self)
-
-        self.ui_spiral.btnmainmenu.clicked.connect(self.mainmenu)
-        self.ui_spiral.cancel.clicked.connect(self.cancel)
-        self.ui_spiral.confirm.clicked.connect(self.confirm)
-
-        self.ui_spiral.btns.clicked.connect(self.s)
-        self.ui_spiral.btnp.clicked.connect(self.p)
-        self.ui_spiral.btni.clicked.connect(self.i)
-        self.ui_spiral.btnr.clicked.connect(self.r)
-        self.ui_spiral.btna.clicked.connect(self.a)
-        self.ui_spiral.btnl.clicked.connect(self.l)
-        self.ui_spiral.btnsoft.clicked.connect(self.soft)
-
-        self.guessed = []
-        self.maxrightWords = 0
-        self.double_right = 0
-        self.cnt = 0
-        self.n = 0
-
-        dictionary = open("Dictionary.txt", "r", encoding="utf-8")
-        while True:
-            self.words = dictionary.readline()
-            self.words = self.words.split()
-            if "спираль" in self.words:
-                break
-            if not self.words:
-                break
-        dictionary.close()
-
-    def mainmenu(self):
-        if sound_play:
-            sound_player.play()
-        widget.setCurrentIndex(widget.currentIndex() - 9)
-        self.clear_screen()
-
-    def cancel(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_spiral.word.setText("")
-        self.btn_enable()
-
-    def confirm(self):
-        if sound_play:
-            sound_player.play()
-        if self.ui_spiral.word.text() in self.words and self.ui_spiral.word.text() != "" and self.ui_spiral.word.text() not in self.guessed:
-            self.guessed.append(self.ui_spiral.word.text())
-            if self.cnt >= 1:
-                self.double_right += 1
-            self.n += 1
-            self.ui_spiral.count.setText(str(self.n) + "/10 СЛОВ")
-
-            if self.n == 10:
-                widget.setCurrentIndex(widget.currentIndex() - 4)
-                self.clear_screen()
-
-            elif self.maxrightWords != 6:
-                self.ui_spiral.rightWords.setText(self.ui_spiral.rightWords.text() + self.ui_spiral.word.text() + "\n")
-                self.maxrightWords += 1
-            else:
-                self.ui_spiral.rightWords_2.setText(
-                    self.ui_spiral.rightWords_2.text() + self.ui_spiral.word.text() + "\n")
-
-            if self.double_right == 2:
-                self.double_right = 0
-                self.cnt -= 1
-                self.ui_spiral.cat.setStyleSheet(
-                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
-
-        elif self.ui_spiral.word.text() not in self.words and self.ui_spiral.word.text() != "":
-            if self.cnt < 5:
-                self.double_right = 0
-                self.cnt += 1
-                self.ui_spiral.cat.setStyleSheet(
-                    "background-image: url(:/back/resources/sprites/cat-" + str(self.cnt) + ".png);")
-            else:
-                widget.setCurrentIndex(widget.currentIndex() - 5)
-                self.clear_screen()
-
-        self.ui_spiral.word.setText("")
-
-        self.btn_enable()
-
-    def s(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "С")
-        self.ui_spiral.btns.setEnabled(False)
-
-    def p(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "П")
-        self.ui_spiral.btnp.setEnabled(False)
-
-    def i(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "И")
-        self.ui_spiral.btni.setEnabled(False)
-
-    def r(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "Р")
-        self.ui_spiral.btnr.setEnabled(False)
-
-    def a(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "А")
-        self.ui_spiral.btna.setEnabled(False)
-
-    def l(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "Л")
-        self.ui_spiral.btnl.setEnabled(False)
-
-    def soft(self):
-        if sound_play:
-            sound_player.play()
-        self.ui_spiral.word.setText(self.ui_spiral.word.text() + "Ь")
-        self.ui_spiral.btnsoft.setEnabled(False)
-
-    def clear_screen(self):
-        self.n = 0
-        self.double_right = 0
-        self.ui_spiral.count.setText("0/10 СЛОВ")
-        self.cnt = 0
-        self.ui_spiral.cat.setStyleSheet(
-            "background-image: url(:/back/resources/sprites/cat-0.png);")
-        self.guessed = []
-        self.ui_spiral.rightWords.setText("")
-        self.ui_spiral.rightWords_2.setText("")
-        self.maxrightWords = 0
-        self.ui_spiral.word.setText("")
-        self.btn_enable()
-
-    def btn_enable(self):
-        self.ui_spiral.btns.setEnabled(True)
-        self.ui_spiral.btnp.setEnabled(True)
-        self.ui_spiral.btni.setEnabled(True)
-        self.ui_spiral.btnr.setEnabled(True)
-        self.ui_spiral.btna.setEnabled(True)
-        self.ui_spiral.btnl.setEnabled(True)
-        self.ui_spiral.btnsoft.setEnabled(True)
+        self.ui_level.rightWords.setText("")
+        self.ui_level.rightWords_2.setText("")
+        self.ui_level.word.setText("")
 
 
 class Lose(QtWidgets.QMainWindow):
@@ -817,12 +482,13 @@ class Lose(QtWidgets.QMainWindow):
         if sound_play:
             sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() - 4)
+        level_screen.clear_screen()
 
     @staticmethod
     def returne():
         if sound_play:
             sound_player.play()
-        widget.setCurrentIndex(widget.currentIndex() + number_level - 4)
+        widget.setCurrentIndex(widget.currentIndex() + 2)
 
 
 class Win(QtWidgets.QMainWindow):
@@ -839,12 +505,14 @@ class Win(QtWidgets.QMainWindow):
         if sound_play:
             sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() - 5)
+        level_screen.clear_screen()
+
 
     @staticmethod
     def returne():
         if sound_play:
             sound_player.play()
-        widget.setCurrentIndex(widget.currentIndex() + number_level - 5)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
 
 
 def center_widget():
@@ -877,11 +545,7 @@ if __name__ == '__main__':
     exit_screen = Exit()
     lose_screen = Lose()
     win_screen = Win()
-    marker_screen = Marker()
-    pillow_screen = Pillow()
-    mokasin_screen = Mokasin()
-    spiral_screen = Spiral()
-    operetta_screen = Operetta()
+    level_screen = Level()
 
     widget.addWidget(mainmenu_screen)   # 0
     widget.addWidget(settings_screen)   # 1
@@ -889,11 +553,8 @@ if __name__ == '__main__':
     widget.addWidget(exit_screen)   # 3
     widget.addWidget(lose_screen)   # 4
     widget.addWidget(win_screen)    # 5
-    widget.addWidget(marker_screen)     # 6
-    widget.addWidget(pillow_screen)     # 7
-    widget.addWidget(mokasin_screen)    # 8
-    widget.addWidget(spiral_screen)     # 9
-    widget.addWidget(operetta_screen)     #10
+    widget.addWidget(level_screen)  #6
+    widget.currentChanged.connect(lambda index: level_screen.generate() if widget.currentIndex() == index else None)
 
     widget.show()
     center_widget()
