@@ -23,6 +23,7 @@ class Mainmenu(QtWidgets.QMainWindow):
             sound_player.play()
         global number_level
         number_level = random.randint(1, 5)
+        level_screen.generate()
         widget.setCurrentIndex(widget.currentIndex() + 6)
 
     @staticmethod
@@ -200,7 +201,7 @@ class Level(QtWidgets.QMainWindow):
             case 5: self.operetta()
 
     def marker(self):
-        self.filling_dictionary("фломастер")
+        self.filling_dictionary("Фломастер")
         self.maxrightWords = 12
 
         self.ui_level.count.setText("0/12 СЛОВ")
@@ -237,7 +238,7 @@ class Level(QtWidgets.QMainWindow):
         button_r.clicked.connect(self.letter_in_layout)
 
     def pillow(self):
-        self.filling_dictionary("подушка")
+        self.filling_dictionary("Подушка")
         self.maxrightWords = 11
 
         self.ui_level.count.setText("0/11 СЛОВ")
@@ -268,7 +269,7 @@ class Level(QtWidgets.QMainWindow):
         button_a.clicked.connect(self.letter_in_layout)
 
     def mokasin(self):
-        self.filling_dictionary("мокасин")
+        self.filling_dictionary("Мокасин")
         self.maxrightWords = 11
 
         self.ui_level.count.setText("0/11 СЛОВ")
@@ -300,7 +301,7 @@ class Level(QtWidgets.QMainWindow):
         button_n.clicked.connect(self.letter_in_layout)
 
     def spiral(self):
-        self.filling_dictionary("спираль")
+        self.filling_dictionary("Спираль")
         self.maxrightWords = 10
 
         self.ui_level.count.setText("0/10 СЛОВ")
@@ -332,7 +333,7 @@ class Level(QtWidgets.QMainWindow):
         button_soft.clicked.connect(self.letter_in_layout)
 
     def operetta(self):
-        self.filling_dictionary("оперетта")
+        self.filling_dictionary("Оперетта")
         self.maxrightWords = 10
 
         self.ui_level.count.setText("0/10 СЛОВ")
@@ -382,7 +383,7 @@ class Level(QtWidgets.QMainWindow):
         if sound_play:
             sound_player.play()
 
-        enter_word = self.ui_level.word.text()
+        enter_word = self.ui_level.word.text().lower()
 
         if enter_word in self.words_dictionary and enter_word != "" and enter_word not in self.guessed:
             self.guessed.append(enter_word)
@@ -396,11 +397,11 @@ class Level(QtWidgets.QMainWindow):
                 self.clear_screen()
 
             elif self.max_in_column != 6:
-                self.ui_level.rightWords.setText(self.ui_level.rightWords.text() + enter_word + "\n")
+                self.ui_level.rightWords.setText(self.ui_level.rightWords.text() + enter_word.upper() + "\n")
                 self.max_in_column += 1
             else:
                 self.ui_level.rightWords_2.setText(
-                    self.ui_level.rightWords_2.text() + enter_word + "\n")
+                    self.ui_level.rightWords_2.text() + enter_word.upper() + "\n")
 
             if self.double_right == 2:
                 self.double_right = 0
@@ -482,12 +483,13 @@ class Lose(QtWidgets.QMainWindow):
         if sound_play:
             sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() - 4)
-        level_screen.clear_screen()
+
 
     @staticmethod
     def returne():
         if sound_play:
             sound_player.play()
+        level_screen.generate()
         widget.setCurrentIndex(widget.currentIndex() + 2)
 
 
@@ -505,13 +507,12 @@ class Win(QtWidgets.QMainWindow):
         if sound_play:
             sound_player.play()
         widget.setCurrentIndex(widget.currentIndex() - 5)
-        level_screen.clear_screen()
-
 
     @staticmethod
     def returne():
         if sound_play:
             sound_player.play()
+        level_screen.generate()
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
 
@@ -554,7 +555,7 @@ if __name__ == '__main__':
     widget.addWidget(lose_screen)   # 4
     widget.addWidget(win_screen)    # 5
     widget.addWidget(level_screen)  #6
-    widget.currentChanged.connect(lambda index: level_screen.generate() if widget.currentIndex() == index else None)
+
 
     widget.show()
     center_widget()
