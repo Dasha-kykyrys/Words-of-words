@@ -424,7 +424,7 @@ class Level(QtWidgets.QMainWindow):
         self.set_buttons_enabled()
 
     def filling_dictionary(self, word):
-        dictionary = open("Dictionary.txt", "r", encoding="utf-8")
+        dictionary = open("resources/Dictionary.txt", "r", encoding="utf-8")
         while True:
             self.words_dictionary = dictionary.readline()
             self.words_dictionary = self.words_dictionary.split()
