@@ -387,7 +387,7 @@ class Level(QtWidgets.QMainWindow):
 
         if enter_word in self.words_dictionary and enter_word != "" and enter_word not in self.guessed:
             self.guessed.append(enter_word)
-            if self.mistake >= 1:
+            if self.mistake > 0:
                 self.double_right += 1
             self.count_guessed += 1
             self.ui_level.count.setText(str(self.count_guessed) + "/" + str(self.maxrightWords) + " СЛОВ")
@@ -399,6 +399,7 @@ class Level(QtWidgets.QMainWindow):
             elif self.max_in_column != 6:
                 self.ui_level.rightWords.setText(self.ui_level.rightWords.text() + enter_word.upper() + "\n")
                 self.max_in_column += 1
+
             else:
                 self.ui_level.rightWords_2.setText(
                     self.ui_level.rightWords_2.text() + enter_word.upper() + "\n")
@@ -409,7 +410,7 @@ class Level(QtWidgets.QMainWindow):
                 self.ui_level.cat.setStyleSheet(
                     "background-image: url(:/back/resources/sprites/cat-" + str(self.mistake) + ".png);")
 
-        elif self.ui_level.word.text() not in self.words_dictionary and self.ui_level.word.text() != "":
+        elif self.ui_level.word.text() not in self.words_dictionary and self.ui_level.word.text() != "" and enter_word not in self.guessed:
             if self.mistake < 5:
                 self.double_right = 0
                 self.mistake += 1
@@ -519,7 +520,7 @@ class Win(QtWidgets.QMainWindow):
 def center_widget():
     desktop = QDesktopWidget().screenGeometry()
     x = (desktop.width() - widget.width()) // 2
-    y = (desktop.height() - widget.height()) // 2
+    y = (desktop.height() - widget.height()) // 2 - 30
     widget.move(x, y)
 
 
