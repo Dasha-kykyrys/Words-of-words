@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QFontDatabase
 
 class Ui_mainmenu(object):
     def setupUi(self, mainmenu):
@@ -448,9 +449,16 @@ class Ui_settings(object):
 
 class Ui_level(object):
     def setupUi(self, level):
+        QFontDatabase.addApplicationFont(":font/resources/AmaticSC-Bold.ttf")
+
         level.setObjectName("level")
         level.resize(1440, 1024)
         level.setMinimumSize(QtCore.QSize(1440, 1024))
+        font = QtGui.QFont()
+        font.setFamily("Amatic SC")
+        font.setBold(True)
+        font.setWeight(75)
+        level.setFont(font)
         level.setToolTip("")
         level.setStyleSheet("QMainWindow{\n"
 "border-image: url(:/back/resources/sprites/level.png);\n"
@@ -478,10 +486,12 @@ class Ui_level(object):
         font.setFamily("Amatic SC")
         font.setPointSize(48)
         font.setBold(True)
-        font.setWeight(75)
+        font.setItalic(False)
+        font.setWeight(9)
         self.word.setFont(font)
         self.word.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.word.setStyleSheet("color: rgb(255, 255, 255);")
+        self.word.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 48pt \"Amatic SC\";")
         self.word.setAlignment(QtCore.Qt.AlignCenter)
         self.word.setObjectName("word")
         self.box_word_btnconfirmcancel.addWidget(self.word)
@@ -540,11 +550,13 @@ class Ui_level(object):
         font = QtGui.QFont()
         font.setFamily("Amatic SC")
         font.setPointSize(36)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(9)
         self.rightWords.setFont(font)
         self.rightWords.setMouseTracking(False)
-        self.rightWords.setStyleSheet("color: rgb(255, 255, 255);")
+        self.rightWords.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 36pt \"Amatic SC\";")
         self.rightWords.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.rightWords.setObjectName("rightWords")
         self.box_rightWords.addWidget(self.rightWords, 1, 0, 2, 1)
@@ -554,10 +566,12 @@ class Ui_level(object):
         font = QtGui.QFont()
         font.setFamily("Amatic SC")
         font.setPointSize(36)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(9)
         self.rightWords_2.setFont(font)
-        self.rightWords_2.setStyleSheet("color: rgb(255, 255, 255);")
+        self.rightWords_2.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 36pt \"Amatic SC\";")
         self.rightWords_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.rightWords_2.setObjectName("rightWords_2")
         self.box_rightWords.addWidget(self.rightWords_2, 1, 1, 2, 1)
@@ -567,11 +581,12 @@ class Ui_level(object):
         font = QtGui.QFont()
         font.setFamily("Amatic SC")
         font.setPointSize(36)
-        font.setBold(True)
-        font.setUnderline(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(9)
         self.label_rightWords.setFont(font)
-        self.label_rightWords.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_rightWords.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 36pt \"Amatic SC\";")
         self.label_rightWords.setObjectName("label_rightWords")
         self.box_rightWords.addWidget(self.label_rightWords, 0, 0, 1, 3)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -620,10 +635,12 @@ class Ui_level(object):
         font = QtGui.QFont()
         font.setFamily("Amatic SC")
         font.setPointSize(40)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(9)
         self.count.setFont(font)
-        self.count.setStyleSheet("color: rgb(255, 255, 255);")
+        self.count.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 40pt \"Amatic SC\";")
         self.count.setObjectName("count")
         self.box_mainmenu_count.addWidget(self.count)
         self.gridLayout.addLayout(self.box_mainmenu_count, 0, 0, 1, 1)
@@ -637,8 +654,8 @@ class Ui_level(object):
         level.setWindowTitle(_translate("level", "MainWindow"))
         self.confirm.setToolTip(_translate("level", "подтверждение"))
         self.cancel.setToolTip(_translate("level", "отмена"))
-        self.btnmainmenu.setToolTip(_translate("level", "меню"))
         self.label_rightWords.setText(_translate("level", "ОТГАДАНО:"))
+        self.count.setText(_translate("level", "0/10 СЛОВ"))
 
 
 class Ui_lose(object):

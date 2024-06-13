@@ -410,7 +410,8 @@ class Level(QtWidgets.QMainWindow):
                 self.ui_level.cat.setStyleSheet(
                     "background-image: url(:/back/resources/sprites/cat-" + str(self.mistake) + ".png);")
 
-        elif self.ui_level.word.text() not in self.words_dictionary and self.ui_level.word.text() != "" and enter_word not in self.guessed:
+        elif (self.ui_level.word.text() not in self.words_dictionary and self.ui_level.word.text() != "" and
+              enter_word not in self.guessed):
             if self.mistake < 5:
                 self.double_right = 0
                 self.mistake += 1
